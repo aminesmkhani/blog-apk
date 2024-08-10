@@ -69,6 +69,21 @@ class HomeScreen extends StatelessWidget {
                 child: Text('Explore today’s',
                     style: themeData.textTheme.titleLarge),
               ),
+              SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: 90,
+                child: ListView.builder(
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                  return Container(
+                    width: 50,
+                    height: 50,
+                    color: Colors.red,
+                    margin: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  );
+                }),
+              ),
             ],
           ),
         ),
