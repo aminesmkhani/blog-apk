@@ -104,8 +104,14 @@ class HomeScreen extends StatelessWidget {
                               child: Container(
                                 margin: const EdgeInsets.all(3),
                                 decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(20)),
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                padding: const EdgeInsets.all(4),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(16),
+                                    child: Image.asset(
+                                        'assets/img/stories/${story.imageFileName}')),
                               ),
                             ),
                             const SizedBox(height: 4),
