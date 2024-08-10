@@ -6,34 +6,26 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  static const defaultFontFamily = 'Avenir';
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    const defaultFontFamily = 'Avenir';
+    final primaryTextColor = Color(0xff0D253C);
+    final secondaryTextColor = Color(0xff2D4379);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         textTheme: TextTheme(
-          headlineSmall: TextStyle(
+          titleMedium: TextStyle(
+              fontFamily: defaultFontFamily,
+              color: secondaryTextColor,
+              fontSize: 14),
+          titleLarge: TextStyle(
             fontFamily: defaultFontFamily,
             fontWeight: FontWeight.bold,
+            color: primaryTextColor,
           ),
         ),
         useMaterial3: true,
@@ -48,6 +40,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -59,7 +52,10 @@ class HomeScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('Hi, Amin'),
+                    Text(
+                      'Hi, Amin',
+                      style: themeData.textTheme.titleMedium,
+                    ),
                     Image.asset(
                       'assets/img/icons/notification.png',
                       width: 32,
@@ -71,7 +67,7 @@ class HomeScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.fromLTRB(32, 0, 0, 24),
                 child: Text('Explore today’s',
-                    style: Theme.of(context).textTheme.headlineSmall),
+                    style: themeData.textTheme.titleLarge),
               ),
             ],
           ),
