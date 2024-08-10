@@ -31,7 +31,10 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         textTheme: TextTheme(
-          headlineSmall: TextStyle(fontFamily: defaultFontFamily),
+          headlineSmall: TextStyle(
+            fontFamily: defaultFontFamily,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         useMaterial3: true,
       ),
@@ -67,7 +70,8 @@ class HomeScreen extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(32, 0, 0, 24),
-                child: Text('Explore today’s'),
+                child: Text('Explore today’s',
+                    style: Theme.of(context).textTheme.headlineSmall),
               ),
             ],
           ),
