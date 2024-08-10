@@ -1,3 +1,4 @@
+import 'package:blogclub/data.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -41,6 +42,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
+    final stories = AppDatabase.stories;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -73,16 +75,16 @@ class HomeScreen extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 height: 90,
                 child: ListView.builder(
-                  itemCount: 10,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                  return Container(
-                    width: 50,
-                    height: 50,
-                    color: Colors.red,
-                    margin: EdgeInsets.fromLTRB(8, 0, 8, 0),
-                  );
-                }),
+                    itemCount: stories.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        width: 50,
+                        height: 50,
+                        color: Colors.red,
+                        margin: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                      );
+                    }),
               ),
             ],
           ),
