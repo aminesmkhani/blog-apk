@@ -78,11 +78,15 @@ class HomeScreen extends StatelessWidget {
                     itemCount: stories.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
-                      return Container(
-                        width: 50,
-                        height: 50,
-                        color: Colors.red,
-                        margin: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                      final story = stories[index];
+                      return Column(
+                        children: [
+                          Container(
+                            width: 68,
+                            height: 68,
+                          ),
+                          Text(story.name),
+                        ],
                       );
                     }),
               ),
