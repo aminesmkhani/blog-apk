@@ -128,16 +128,26 @@ class _Category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(32)
+      ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(32),
         child: Image.asset('assets/img/posts/large/${category.imageFileName}',
         fit: BoxFit.cover,
         ),
       ),
-      margin: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        color: Colors.blue,
-        borderRadius: BorderRadius.circular(32)
+      foregroundDecoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(32),
+        gradient: LinearGradient(
+          begin: Alignment.bottomCenter,
+          end: Alignment.center,
+          colors: [
+          Color(0xff0D253C),
+         Colors.transparent
+        ])
       ),
     );
   }
