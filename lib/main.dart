@@ -1,4 +1,5 @@
 import 'package:blogclub/data.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
@@ -20,30 +21,27 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         textTheme: TextTheme(
-            titleMedium: TextStyle(
-                fontFamily: defaultFontFamily,
-                color: secondaryTextColor,
-                fontWeight: FontWeight.w200,
-                fontSize: 18),
-            titleLarge: TextStyle(
-              fontFamily: defaultFontFamily,
-              fontWeight: FontWeight.bold,
-              color: primaryTextColor,
-            ),
-            bodyMedium: TextStyle(
+          titleMedium: TextStyle(
               fontFamily: defaultFontFamily,
               color: secondaryTextColor,
-              fontSize: 12,
-            ),
-            headlineMedium: TextStyle(
+              fontWeight: FontWeight.w200,
+              fontSize: 18),
+          titleLarge: TextStyle(
+            fontFamily: defaultFontFamily,
+            fontWeight: FontWeight.bold,
+            color: primaryTextColor,
+          ),
+          bodyMedium: TextStyle(
+            fontFamily: defaultFontFamily,
+            color: secondaryTextColor,
+            fontSize: 12,
+          ),
+          headlineMedium: TextStyle(
               fontFamily: defaultFontFamily,
               fontSize: 24,
               color: primaryTextColor,
-              fontWeight: FontWeight.w700
-            ),
-            
-            ),
-            
+              fontWeight: FontWeight.w700),
+        ),
         useMaterial3: true,
       ),
       home: const HomeScreen(),
@@ -87,9 +85,59 @@ class HomeScreen extends StatelessWidget {
                     style: themeData.textTheme.headlineMedium),
               ),
               _StoryList(stories: stories),
+              _CategoryList(),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _CategoryList extends StatelessWidget {
+  const _CategoryList({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final categories = AppDatabase.categories;
+    return CarouselSlider.builder(
+        itemCount: categories.length,
+        itemBuilder: (context, index, realIndex) {
+          return _Category(category: categories[realIndex],);
+        },
+        options: CarouselOptions(
+          scrollDirection: Axis.horizontal,
+          viewportFraction: 0.8,
+          aspectRatio: 1.2,
+          initialPage: 0,
+          disableCenter: true,
+          enableInfiniteScroll: false,
+          padEnds: false
+        ));
+  }
+}
+
+class _Category extends StatelessWidget {
+  final Category category;
+  const _Category({
+    super.key, required this.category,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(32),
+        child: Image.asset('assets/img/posts/large/${category.imageFileName}',
+        fit: BoxFit.cover,
+        ),
+      ),
+      margin: EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        borderRadius: BorderRadius.circular(32)
       ),
     );
   }
@@ -137,7 +185,7 @@ class _Story extends StatelessWidget {
         children: [
           Stack(
             children: [
-             story.isViewed ? _profileImageViewed(): _profileImageNormal(),
+              story.isViewed ? _profileImageViewed() : _profileImageNormal(),
               Positioned(
                   bottom: 0,
                   right: 0,
