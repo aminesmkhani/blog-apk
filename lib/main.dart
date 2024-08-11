@@ -139,14 +139,14 @@ class _Story extends StatelessWidget {
                       ]),
                 ),
                 child: Container(
-                  margin: const EdgeInsets.all(3),
+                  margin: const EdgeInsets.all(2),
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(22),
                   ),
-                  padding: const EdgeInsets.all(4),
+                  padding: const EdgeInsets.all(5),
                   child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(17),
                       child: Image.asset(
                           'assets/img/stories/${story.imageFileName}')),
                 ),
