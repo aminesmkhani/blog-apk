@@ -23,7 +23,8 @@ class MyApp extends StatelessWidget {
             titleMedium: TextStyle(
                 fontFamily: defaultFontFamily,
                 color: secondaryTextColor,
-                fontSize: 14),
+                fontWeight: FontWeight.w200,
+                fontSize: 18),
             titleLarge: TextStyle(
               fontFamily: defaultFontFamily,
               fontWeight: FontWeight.bold,
@@ -33,7 +34,16 @@ class MyApp extends StatelessWidget {
               fontFamily: defaultFontFamily,
               color: secondaryTextColor,
               fontSize: 12,
-            )),
+            ),
+            headlineMedium: TextStyle(
+              fontFamily: defaultFontFamily,
+              fontSize: 24,
+              color: primaryTextColor,
+              fontWeight: FontWeight.w700
+            ),
+            
+            ),
+            
         useMaterial3: true,
       ),
       home: const HomeScreen(),
@@ -72,9 +82,9 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(32, 0, 0, 24),
+                padding: const EdgeInsets.fromLTRB(32, 0, 0, 16),
                 child: Text('Explore today’s',
-                    style: themeData.textTheme.titleLarge),
+                    style: themeData.textTheme.headlineMedium),
               ),
               _StoryList(stories: stories),
             ],
