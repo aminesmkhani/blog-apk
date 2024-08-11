@@ -110,6 +110,7 @@ class _StoryList extends StatelessWidget {
       height: 100,
       child: ListView.builder(
           itemCount: stories.length,
+          physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
           padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
           itemBuilder: (context, index) {
