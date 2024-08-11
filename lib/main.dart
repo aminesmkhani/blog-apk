@@ -97,7 +97,7 @@ class _StoryList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      height: 90,
+      height: 100,
       child: ListView.builder(
           itemCount: stories.length,
           scrollDirection: Axis.horizontal,
@@ -121,12 +121,12 @@ class _Story extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(4, 0, 4, 0),
+      margin: const EdgeInsets.fromLTRB(4, 2, 4, 0),
       child: Column(
         children: [
           Stack(
             children: [
-             story.isViewed ? _profileImageViewed(context): _profileImageNormal(),
+             story.isViewed ? _profileImageViewed(): _profileImageNormal(),
               Positioned(
                   bottom: 0,
                   right: 0,
@@ -166,7 +166,7 @@ class _Story extends StatelessWidget {
     );
   }
 
-  Widget _profileImageViewed(BuildContext context) {
+  Widget _profileImageViewed() {
     return SizedBox(
       width: 68,
       height: 68,
@@ -174,7 +174,7 @@ class _Story extends StatelessWidget {
         borderType: BorderType.RRect,
         strokeWidth: 2,
         radius: const Radius.circular(24),
-        color: Theme.of(context).textTheme.bodyMedium!.color!,
+        color: const Color(0xff7B8BB2),
         dashPattern: const [8.3],
         padding: const EdgeInsets.all(7),
         child: Container(
