@@ -107,6 +107,8 @@ class _CategoryList extends StatelessWidget {
         itemCount: categories.length,
         itemBuilder: (context, index, realIndex) {
           return _Category(
+            left: realIndex==0?32:8,
+            right: realIndex==categories.length-1?32:8,
             category: categories[realIndex],
           );
         },
@@ -115,54 +117,63 @@ class _CategoryList extends StatelessWidget {
             viewportFraction: 0.8,
             aspectRatio: 1.2,
             initialPage: 0,
-            disableCenter: true,
+            scrollPhysics: const BouncingScrollPhysics(),
+            disableCenter: false,
             enableInfiniteScroll: false,
-            padEnds: false));
+            padEnds: false,
+            enlargeCenterPage: true,
+            enlargeStrategy: CenterPageEnlargeStrategy.height));
   }
 }
 
 class _Category extends StatelessWidget {
   final Category category;
+  final double left;
+  final double right;
   const _Category({
     super.key,
-    required this.category,
+    required this.category, required this.left, required this.right,
   });
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-           Positioned.fill(
+        Positioned.fill(
             top: 100,
-            right: 56,
-            left: 56,
-            bottom: 20,
+            right: 65,
+            left: 65,
+            bottom: 24,
             child: Container(
-          decoration: const BoxDecoration(boxShadow: [
-            BoxShadow(blurRadius: 20, color: Color(0xaa0D253C)),
-          ]),
-        )),
-        Container(
-          margin: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-              color: Colors.blue, borderRadius: BorderRadius.circular(32)),
-          foregroundDecoration: BoxDecoration(
+              decoration: const BoxDecoration(boxShadow: [
+                BoxShadow(blurRadius: 20, color: Color(0xaa0D253C)),
+              ]),
+            )),
+        Positioned.fill(
+          left: left,
+          right: right,
+          child: Container(
+            margin: const EdgeInsets.fromLTRB(0, 16, 0, 16),
+            decoration: BoxDecoration(
+                color: Colors.blue, borderRadius: BorderRadius.circular(32)),
+            foregroundDecoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(32),
+                gradient: const LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.center,
+                    colors: [Color(0xff0D253C), Colors.transparent])),
+            child: ClipRRect(
               borderRadius: BorderRadius.circular(32),
-              gradient: const LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.center,
-                  colors: [Color(0xff0D253C), Colors.transparent])),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(32),
-            child: Image.asset(
-              'assets/img/posts/large/${category.imageFileName}',
-              fit: BoxFit.cover,
+              child: Image.asset(
+                'assets/img/posts/large/${category.imageFileName}',
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),
         Positioned(
           bottom: 48,
-          left: 42,
+          left: 56,
           child: Text(
             category.title,
             style: Theme.of(context)
