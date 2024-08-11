@@ -75,67 +75,95 @@ class HomeScreen extends StatelessWidget {
                 child: Text('Explore today’s',
                     style: themeData.textTheme.titleLarge),
               ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: 90,
-                child: ListView.builder(
-                    itemCount: stories.length,
-                    scrollDirection: Axis.horizontal,
-                    padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
-                    itemBuilder: (context, index) {
-                      final story = stories[index];
-                      return Container(
-                        margin: const EdgeInsets.fromLTRB(4, 0, 4, 0),
-                        child: Column(
-                          children: [
-                            Stack(
-                              children: [
-                                Container(
-                                  width: 68,
-                                  height: 68,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(24),
-                                    gradient: const LinearGradient(
-                                        begin: Alignment.topLeft,
-                                        colors: [
-                                          Color(0xff376AED),
-                                          Color(0xff49B0E2),
-                                          Color(0xff9CECFB)
-                                        ]),
-                                  ),
-                                  child: Container(
-                                    margin: const EdgeInsets.all(3),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    padding: const EdgeInsets.all(4),
-                                    child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(16),
-                                        child: Image.asset(
-                                            'assets/img/stories/${story.imageFileName}')),
-                                  ),
-                                ),
-                                Positioned(
-                                    bottom: 0,
-                                    right: 0,
-                                    child: Image.asset(
-                                      'assets/img/icons/${story.iconFileName}',
-                                      width: 24,
-                                      height: 24,
-                                    )),
-                              ],
-                            ),
-                            const SizedBox(height: 4),
-                            Text(story.name),
-                          ],
-                        ),
-                      );
-                    }),
-              ),
+              _StoryList(stories: stories),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class _StoryList extends StatelessWidget {
+  const _StoryList({
+    super.key,
+    required this.stories,
+  });
+
+  final List<StoryData> stories;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      height: 90,
+      child: ListView.builder(
+          itemCount: stories.length,
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.fromLTRB(32, 0, 32, 0),
+          itemBuilder: (context, index) {
+            final story = stories[index];
+            return _Story(story: story);
+          }),
+    );
+  }
+}
+
+class _Story extends StatelessWidget {
+  const _Story({
+    super.key,
+    required this.story,
+  });
+
+  final StoryData story;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(4, 0, 4, 0),
+      child: Column(
+        children: [
+          Stack(
+            children: [
+              Container(
+                width: 68,
+                height: 68,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(24),
+                  gradient: const LinearGradient(
+                      begin: Alignment.topLeft,
+                      colors: [
+                        Color(0xff376AED),
+                        Color(0xff49B0E2),
+                        Color(0xff9CECFB)
+                      ]),
+                ),
+                child: Container(
+                  margin: const EdgeInsets.all(3),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding: const EdgeInsets.all(4),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(16),
+                      child: Image.asset(
+                          'assets/img/stories/${story.imageFileName}')),
+                ),
+              ),
+              Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: Image.asset(
+                    'assets/img/icons/${story.iconFileName}',
+                    width: 24,
+                    height: 24,
+                  )),
+            ],
+          ),
+          const SizedBox(height: 4),
+          Text(story.name),
+        ],
       ),
     );
   }
