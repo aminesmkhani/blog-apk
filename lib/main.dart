@@ -1,4 +1,5 @@
 import 'package:blogclub/data.dart';
+import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -125,32 +126,7 @@ class _Story extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Container(
-                width: 68,
-                height: 68,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(24),
-                  gradient: const LinearGradient(
-                      begin: Alignment.topLeft,
-                      colors: [
-                        Color(0xff376AED),
-                        Color(0xff49B0E2),
-                        Color(0xff9CECFB)
-                      ]),
-                ),
-                child: Container(
-                  margin: const EdgeInsets.all(2),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(22),
-                  ),
-                  padding: const EdgeInsets.all(5),
-                  child: ClipRRect(
-                      borderRadius: BorderRadius.circular(17),
-                      child: Image.asset(
-                          'assets/img/stories/${story.imageFileName}')),
-                ),
-              ),
+             story.isViewed ? _profileImageViewed(context): _profileImageNormal(),
               Positioned(
                   bottom: 0,
                   right: 0,
@@ -166,5 +142,54 @@ class _Story extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Container _profileImageNormal() {
+    return Container(
+      width: 68,
+      height: 68,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(24),
+        gradient: const LinearGradient(
+            begin: Alignment.topLeft,
+            colors: [Color(0xff376AED), Color(0xff49B0E2), Color(0xff9CECFB)]),
+      ),
+      child: Container(
+        margin: const EdgeInsets.all(2),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(22),
+        ),
+        padding: const EdgeInsets.all(5),
+        child: _profileImage(),
+      ),
+    );
+  }
+
+  Widget _profileImageViewed(BuildContext context) {
+    return SizedBox(
+      width: 68,
+      height: 68,
+      child: DottedBorder(
+        borderType: BorderType.RRect,
+        strokeWidth: 2,
+        radius: const Radius.circular(24),
+        color: Theme.of(context).textTheme.bodyMedium!.color!,
+        dashPattern: const [8.3],
+        padding: const EdgeInsets.all(7),
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(24),
+          ),
+          child: _profileImage(),
+        ),
+      ),
+    );
+  }
+
+  Widget _profileImage() {
+    return ClipRRect(
+        borderRadius: BorderRadius.circular(17),
+        child: Image.asset('assets/img/stories/${story.imageFileName}'));
   }
 }
