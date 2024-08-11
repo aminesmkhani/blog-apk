@@ -137,52 +137,53 @@ class _Category extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned.fill(
-            top: 100,
-            right: 65,
-            left: 65,
-            bottom: 24,
+    return Container(
+      margin: EdgeInsets.fromLTRB(left, 0, right, 0),
+      child: Stack(
+        children: [
+          Positioned.fill(
+              top: 100,
+              right: 65,
+              left: 65,
+              bottom: 24,
+              child: Container(
+                decoration: const BoxDecoration(boxShadow: [
+                  BoxShadow(blurRadius: 20, color: Color(0xaa0D253C)),
+                ]),
+              )),
+          Positioned.fill(
             child: Container(
-              decoration: const BoxDecoration(boxShadow: [
-                BoxShadow(blurRadius: 20, color: Color(0xaa0D253C)),
-              ]),
-            )),
-        Positioned.fill(
-          left: left,
-          right: right,
-          child: Container(
-            margin: const EdgeInsets.fromLTRB(0, 16, 0, 16),
-            decoration: BoxDecoration(
-                color: Colors.blue, borderRadius: BorderRadius.circular(32)),
-            foregroundDecoration: BoxDecoration(
+              margin: const EdgeInsets.fromLTRB(0, 16, 0, 16),
+              decoration: BoxDecoration(
+                  color: Colors.blue, borderRadius: BorderRadius.circular(32)),
+              foregroundDecoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(32),
+                  gradient: const LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.center,
+                      colors: [Color(0xff0D253C), Colors.transparent])),
+              child: ClipRRect(
                 borderRadius: BorderRadius.circular(32),
-                gradient: const LinearGradient(
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.center,
-                    colors: [Color(0xff0D253C), Colors.transparent])),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(32),
-              child: Image.asset(
-                'assets/img/posts/large/${category.imageFileName}',
-                fit: BoxFit.cover,
+                child: Image.asset(
+                  'assets/img/posts/large/${category.imageFileName}',
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
-        ),
-        Positioned(
-          bottom: 48,
-          left: 56,
-          child: Text(
-            category.title,
-            style: Theme.of(context)
-                .textTheme
-                .titleLarge!
-                .apply(color: Colors.white),
+          Positioned(
+            bottom: 48,
+            left: 32,
+            child: Text(
+              category.title,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge!
+                  .apply(color: Colors.white),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
