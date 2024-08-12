@@ -3,8 +3,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+// SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+//       statusBarColor: Colors.white,
+//       statusBarIconBrightness: Brightness.dark,
+//       systemNavigationBarColor: Colors.white,
+//       systemNavigationBarIconBrightness: Brightness.dark));
   runApp(const MyApp());
 }
 
@@ -15,8 +21,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final primaryTextColor = Color(0xff0D253C);
-    final secondaryTextColor = Color(0xff2D4379);
+    var primaryTextColor = const Color(0xff0D253C);
+     var secondaryTextColor =  const Color(0xff2D4379);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -109,7 +115,7 @@ class HomeScreen extends StatelessWidget {
               _StoryList(stories: stories),
               const _CategoryList(),
               const _PostList(),
-              SizedBox(
+              const SizedBox(
                 height: 32,
               )
             ],
@@ -121,9 +127,7 @@ class HomeScreen extends StatelessWidget {
 }
 
 class _CategoryList extends StatelessWidget {
-  const _CategoryList({
-    super.key,
-  });
+  const _CategoryList();
 
   @override
   Widget build(BuildContext context) {
@@ -156,7 +160,6 @@ class _Category extends StatelessWidget {
   final double left;
   final double right;
   const _Category({
-    super.key,
     required this.category,
     required this.left,
     required this.right,
@@ -217,7 +220,6 @@ class _Category extends StatelessWidget {
 
 class _StoryList extends StatelessWidget {
   const _StoryList({
-    super.key,
     required this.stories,
   });
 
@@ -243,7 +245,6 @@ class _StoryList extends StatelessWidget {
 
 class _Story extends StatelessWidget {
   const _Story({
-    super.key,
     required this.story,
   });
 
@@ -326,7 +327,7 @@ class _Story extends StatelessWidget {
 }
 
 class _PostList extends StatelessWidget {
-  const _PostList({super.key});
+  const _PostList();
   @override
   Widget build(BuildContext context) {
     final posts = AppDatabase.posts;
@@ -366,7 +367,6 @@ class _PostList extends StatelessWidget {
 
 class _Post extends StatelessWidget {
   const _Post({
-    super.key,
     required this.post,
   });
 
@@ -466,7 +466,7 @@ class _Post extends StatelessWidget {
 class _BottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 85,
       child: Stack(
         children: [
@@ -493,7 +493,9 @@ class _BottomNavigation extends StatelessWidget {
                       iconFileName: 'Articles.png',
                       activeIconFileName: 'Articles.png',
                       title: 'Article'),
-                      SizedBox(width: 8,),
+                  SizedBox(
+                    width: 8,
+                  ),
                   BottomNavigationItem(
                       iconFileName: 'Search.png',
                       activeIconFileName: 'Search.png',
@@ -513,12 +515,10 @@ class _BottomNavigation extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: Container(
                 height: 65,
-                
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(32.5),
-                  color: const Color(0xff376AED),
-                  border: Border.all(color: Colors.white,width: 4)
-                ),
+                    borderRadius: BorderRadius.circular(32.5),
+                    color: const Color(0xff376AED),
+                    border: Border.all(color: Colors.white, width: 4)),
                 child: Image.asset('assets/img/icons/plus.png'),
               ),
             ),
