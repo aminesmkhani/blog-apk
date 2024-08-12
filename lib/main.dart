@@ -41,14 +41,12 @@ class MyApp extends StatelessWidget {
               fontFamily: defaultFontFamily,
               fontSize: 24,
               color: primaryTextColor,
-              fontWeight: FontWeight.w700
-              ),
+              fontWeight: FontWeight.w700),
           headlineSmall: TextStyle(
-            fontFamily: defaultFontFamily,
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-            color: primaryTextColor
-          ),    
+              fontFamily: defaultFontFamily,
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              color: primaryTextColor),
         ),
         useMaterial3: true,
       ),
@@ -312,23 +310,63 @@ class _PostList extends StatelessWidget {
   const _PostList({super.key});
   @override
   Widget build(BuildContext context) {
+    final posts = AppDatabase.posts;
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 32,right: 24),
+          padding: const EdgeInsets.only(left: 32, right: 24),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Latest News',style:Theme.of(context).textTheme.headlineSmall),
+              Text('Latest News',
+                  style: Theme.of(context).textTheme.headlineSmall),
               TextButton(
                 onPressed: () {},
-                child: const Text('More',style: TextStyle(color:Colors.blue),),
+                child: const Text(
+                  'More',
+                  style: TextStyle(color: Color(0xff376AED)),
+                ),
               ),
             ],
           ),
         ),
+        ListView.builder(itemBuilder: (context, index) {
+          final post = posts[index];
+          return _Post(post: post);
+        }),
       ],
+    );
+  }
+}
+
+class _Post extends StatelessWidget {
+  const _Post({
+    super.key,
+    required this.post,
+  });
+
+  final PostData post;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 149,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(24),
+        boxShadow: const [
+          BoxShadow(
+            blurRadius: 10,
+            color: Color(0x1a5282ff),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Image.asset('assets/img/posts/small/${post.imageFileName}')
+        ],
+      ),
     );
   }
 }
