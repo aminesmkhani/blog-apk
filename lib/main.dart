@@ -322,7 +322,7 @@ class _PostList extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 32, right: 24),
+          padding: const EdgeInsets.only(left: 32, right: 16),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
