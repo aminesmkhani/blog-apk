@@ -15,6 +15,9 @@ import 'package:vector_graphics/vector_graphics.dart';
 class $AssetsImgGen {
   const $AssetsImgGen();
 
+  /// Directory path: assets/img/background
+  $AssetsImgBackgroundGen get background => const $AssetsImgBackgroundGen();
+
   /// Directory path: assets/img/icons
   $AssetsImgIconsGen get icons => const $AssetsImgIconsGen();
 
@@ -23,6 +26,21 @@ class $AssetsImgGen {
 
   /// Directory path: assets/img/stories
   $AssetsImgStoriesGen get stories => const $AssetsImgStoriesGen();
+}
+
+class $AssetsImgBackgroundGen {
+  const $AssetsImgBackgroundGen();
+
+  /// File path: assets/img/background/onboarding.png
+  AssetGenImage get onboarding =>
+      const AssetGenImage('assets/img/background/onboarding.png');
+
+  /// File path: assets/img/background/splash.png
+  AssetGenImage get splash =>
+      const AssetGenImage('assets/img/background/splash.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [onboarding, splash];
 }
 
 class $AssetsImgIconsGen {
