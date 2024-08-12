@@ -427,7 +427,7 @@ class _Post extends StatelessWidget {
                           style: Theme.of(context).textTheme.bodyMedium),
                           Expanded(child:  Container(
                             alignment: Alignment.centerRight,
-                            child: Icon(CupertinoIcons.bookmark_fill,
+                            child: Icon(post.isBookmarked? CupertinoIcons.bookmark_fill: CupertinoIcons.bookmark,
                             size: 16,
                             color: Theme.of(context).textTheme.bodyMedium!.color),
                           ),)
