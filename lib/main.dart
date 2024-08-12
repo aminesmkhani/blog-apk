@@ -56,7 +56,16 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: Stack(
+        children:[
+         const Positioned.fill(child: HomeScreen()),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            left: 0,
+            child: _BottomNavigation())
+      ] 
+      ),
     );
   }
 }
@@ -440,5 +449,16 @@ class _Post extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+
+class _BottomNavigation extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 85,
+      
+    )
   }
 }
