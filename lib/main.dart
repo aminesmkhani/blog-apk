@@ -56,16 +56,10 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: Stack(
-        children:[
-         const Positioned.fill(child: HomeScreen()),
-          Positioned(
-            bottom: 0,
-            right: 0,
-            left: 0,
-            child: _BottomNavigation())
-      ] 
-      ),
+      home: Stack(children: [
+        const Positioned.fill(child: HomeScreen()),
+        Positioned(bottom: 0, right: 0, left: 0, child: _BottomNavigation())
+      ]),
     );
   }
 }
@@ -109,7 +103,9 @@ class HomeScreen extends StatelessWidget {
               _StoryList(stories: stories),
               const _CategoryList(),
               const _PostList(),
-              SizedBox(height: 32,)
+              SizedBox(
+                height: 32,
+              )
             ],
           ),
         ),
@@ -408,7 +404,8 @@ class _Post extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  Text(post.title, style: Theme.of(context).textTheme.titleSmall),
+                  Text(post.title,
+                      style: Theme.of(context).textTheme.titleSmall),
                   const SizedBox(
                     height: 16,
                   ),
@@ -434,12 +431,20 @@ class _Post extends StatelessWidget {
                       ),
                       Text(post.time,
                           style: Theme.of(context).textTheme.bodyMedium),
-                          Expanded(child:  Container(
-                            alignment: Alignment.centerRight,
-                            child: Icon(post.isBookmarked? CupertinoIcons.bookmark_fill: CupertinoIcons.bookmark,
-                            size: 16,
-                            color: Theme.of(context).textTheme.bodyMedium!.color),
-                          ),)
+                      Expanded(
+                        child: Container(
+                          alignment: Alignment.centerRight,
+                          child: Icon(
+                              post.isBookmarked
+                                  ? CupertinoIcons.bookmark_fill
+                                  : CupertinoIcons.bookmark,
+                              size: 16,
+                              color: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .color),
+                        ),
+                      )
                     ],
                   ),
                 ],
@@ -452,13 +457,45 @@ class _Post extends StatelessWidget {
   }
 }
 
-
-class _BottomNavigation extends StatelessWidget{
+class _BottomNavigation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 85,
-      
-    )
+      child: Stack(
+        children: [
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: Container(
+              height: 65,
+              decoration: const BoxDecoration(color: Colors.white,boxShadow:[
+                BoxShadow(
+                  blurRadius:20,
+                  color: Color(0xaa9b8487),
+                  ),
+                  ]
+                   ),
+            ),
+          ),
+          Center(
+            child: Container(
+              width: 65,
+              height: 85,
+              alignment: Alignment.topCenter,
+              child: Container(
+                height: 65,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(32.5),
+                  color: const Color(0xff376AED),
+                ),
+                child: Image.asset('assets/img/icons/plus.png'),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
