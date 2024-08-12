@@ -41,7 +41,14 @@ class MyApp extends StatelessWidget {
               fontFamily: defaultFontFamily,
               fontSize: 24,
               color: primaryTextColor,
-              fontWeight: FontWeight.w700),
+              fontWeight: FontWeight.w700
+              ),
+          headlineSmall: TextStyle(
+            fontFamily: defaultFontFamily,
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+            color: primaryTextColor
+          ),    
         ),
         useMaterial3: true,
       ),
@@ -86,7 +93,8 @@ class HomeScreen extends StatelessWidget {
                     style: themeData.textTheme.headlineMedium),
               ),
               _StoryList(stories: stories),
-              _CategoryList(),
+              const _CategoryList(),
+              const _PostList(),
             ],
           ),
         ),
@@ -107,8 +115,8 @@ class _CategoryList extends StatelessWidget {
         itemCount: categories.length,
         itemBuilder: (context, index, realIndex) {
           return _Category(
-            left: realIndex==0?32:8,
-            right: realIndex==categories.length-1?32:8,
+            left: realIndex == 0 ? 32 : 8,
+            right: realIndex == categories.length - 1 ? 32 : 8,
             category: categories[realIndex],
           );
         },
@@ -132,7 +140,9 @@ class _Category extends StatelessWidget {
   final double right;
   const _Category({
     super.key,
-    required this.category, required this.left, required this.right,
+    required this.category,
+    required this.left,
+    required this.right,
   });
 
   @override
@@ -295,5 +305,30 @@ class _Story extends StatelessWidget {
     return ClipRRect(
         borderRadius: BorderRadius.circular(17),
         child: Image.asset('assets/img/stories/${story.imageFileName}'));
+  }
+}
+
+class _PostList extends StatelessWidget {
+  const _PostList({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 32,right: 24),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Latest News',style:Theme.of(context).textTheme.headlineSmall),
+              TextButton(
+                onPressed: () {},
+                child: const Text('More',style: TextStyle(color:Colors.blue),),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }
