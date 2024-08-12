@@ -43,6 +43,11 @@ class MyApp extends StatelessWidget {
             color: secondaryTextColor,
             fontSize: 12,
           ),
+          bodySmall: const TextStyle(
+            fontFamily: defaultFontFamily,
+            fontWeight: FontWeight.w700,
+            color: Color(0xff7B8BB2),
+            fontSize: 10,),
           headlineMedium: TextStyle(
               fontFamily: defaultFontFamily,
               fontSize: 24,
@@ -52,7 +57,7 @@ class MyApp extends StatelessWidget {
               fontFamily: defaultFontFamily,
               fontSize: 20,
               fontWeight: FontWeight.w700,
-              color: primaryTextColor),
+              color: primaryTextColor),    
         ),
         useMaterial3: true,
       ),
@@ -470,13 +475,15 @@ class _BottomNavigation extends StatelessWidget {
             bottom: 0,
             child: Container(
               height: 65,
-              decoration: const BoxDecoration(color: Colors.white,boxShadow:[
+              decoration: const BoxDecoration(color: Colors.white, boxShadow: [
                 BoxShadow(
-                  blurRadius:20,
-                  color: Color(0xaa9b8487),
-                  ),
-                  ]
-                   ),
+                  blurRadius: 20,
+                  color: Color(0xff9b8487),
+                ),
+              ]),
+              child: Row(
+                children: [],
+              ),
             ),
           ),
           Center(
@@ -496,6 +503,24 @@ class _BottomNavigation extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class BottomNavigationItem extends StatelessWidget {
+  final String iconFileName;
+  final String activeIconFileName;
+  final String title;
+
+  const BottomNavigationItem({super.key, required this.iconFileName, required this.activeIconFileName, required this.title});
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Image.asset('assets/img/icons/$iconFileName'),
+        const SizedBox(height: 4,),
+        Text(title,style: Theme.of(context).textTheme.bodySmall,)
+      ],
     );
   }
 }
