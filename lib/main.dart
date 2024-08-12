@@ -3,8 +3,14 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+// SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+//       statusBarColor: Colors.white,
+//       statusBarIconBrightness: Brightness.dark,
+//       systemNavigationBarColor: Colors.white,
+//       systemNavigationBarIconBrightness: Brightness.dark));
   runApp(const MyApp());
 }
 
@@ -15,8 +21,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final primaryTextColor = Color(0xff0D253C);
-    final secondaryTextColor = Color(0xff2D4379);
+    var primaryTextColor = const Color(0xff0D253C);
+     var secondaryTextColor =  const Color(0xff2D4379);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -43,6 +49,12 @@ class MyApp extends StatelessWidget {
             color: secondaryTextColor,
             fontSize: 12,
           ),
+          bodySmall: const TextStyle(
+            fontFamily: defaultFontFamily,
+            fontWeight: FontWeight.w700,
+            color: Color(0xff7B8BB2),
+            fontSize: 10,
+          ),
           headlineMedium: TextStyle(
               fontFamily: defaultFontFamily,
               fontSize: 24,
@@ -56,7 +68,10 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: Stack(children: [
+        const Positioned.fill(child: HomeScreen()),
+        Positioned(bottom: 0, right: 0, left: 0, child: _BottomNavigation())
+      ]),
     );
   }
 }
@@ -100,7 +115,9 @@ class HomeScreen extends StatelessWidget {
               _StoryList(stories: stories),
               const _CategoryList(),
               const _PostList(),
-              SizedBox(height: 32,)
+              const SizedBox(
+                height: 32,
+              )
             ],
           ),
         ),
@@ -110,9 +127,7 @@ class HomeScreen extends StatelessWidget {
 }
 
 class _CategoryList extends StatelessWidget {
-  const _CategoryList({
-    super.key,
-  });
+  const _CategoryList();
 
   @override
   Widget build(BuildContext context) {
@@ -145,7 +160,6 @@ class _Category extends StatelessWidget {
   final double left;
   final double right;
   const _Category({
-    super.key,
     required this.category,
     required this.left,
     required this.right,
@@ -206,7 +220,6 @@ class _Category extends StatelessWidget {
 
 class _StoryList extends StatelessWidget {
   const _StoryList({
-    super.key,
     required this.stories,
   });
 
@@ -232,7 +245,6 @@ class _StoryList extends StatelessWidget {
 
 class _Story extends StatelessWidget {
   const _Story({
-    super.key,
     required this.story,
   });
 
@@ -315,7 +327,7 @@ class _Story extends StatelessWidget {
 }
 
 class _PostList extends StatelessWidget {
-  const _PostList({super.key});
+  const _PostList();
   @override
   Widget build(BuildContext context) {
     final posts = AppDatabase.posts;
@@ -355,7 +367,6 @@ class _PostList extends StatelessWidget {
 
 class _Post extends StatelessWidget {
   const _Post({
-    super.key,
     required this.post,
   });
 
@@ -399,7 +410,8 @@ class _Post extends StatelessWidget {
                   const SizedBox(
                     height: 8,
                   ),
-                  Text(post.title, style: Theme.of(context).textTheme.titleSmall),
+                  Text(post.title,
+                      style: Theme.of(context).textTheme.titleSmall),
                   const SizedBox(
                     height: 16,
                   ),
@@ -425,12 +437,20 @@ class _Post extends StatelessWidget {
                       ),
                       Text(post.time,
                           style: Theme.of(context).textTheme.bodyMedium),
-                          Expanded(child:  Container(
-                            alignment: Alignment.centerRight,
-                            child: Icon(post.isBookmarked? CupertinoIcons.bookmark_fill: CupertinoIcons.bookmark,
-                            size: 16,
-                            color: Theme.of(context).textTheme.bodyMedium!.color),
-                          ),)
+                      Expanded(
+                        child: Container(
+                          alignment: Alignment.centerRight,
+                          child: Icon(
+                              post.isBookmarked
+                                  ? CupertinoIcons.bookmark_fill
+                                  : CupertinoIcons.bookmark,
+                              size: 16,
+                              color: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .color),
+                        ),
+                      )
                     ],
                   ),
                 ],
@@ -439,6 +459,100 @@ class _Post extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class _BottomNavigation extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 85,
+      child: Stack(
+        children: [
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: Container(
+              height: 65,
+              decoration: const BoxDecoration(color: Colors.white, boxShadow: [
+                BoxShadow(
+                  blurRadius: 20,
+                  color: Color(0xff9b8487),
+                ),
+              ]),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  BottomNavigationItem(
+                      iconFileName: 'Home.png',
+                      activeIconFileName: 'Home.png',
+                      title: 'Home'),
+                  BottomNavigationItem(
+                      iconFileName: 'Articles.png',
+                      activeIconFileName: 'Articles.png',
+                      title: 'Article'),
+                  SizedBox(
+                    width: 8,
+                  ),
+                  BottomNavigationItem(
+                      iconFileName: 'Search.png',
+                      activeIconFileName: 'Search.png',
+                      title: 'Search'),
+                  BottomNavigationItem(
+                      iconFileName: 'Menu.png',
+                      activeIconFileName: 'Menu.png',
+                      title: 'Menu'),
+                ],
+              ),
+            ),
+          ),
+          Center(
+            child: Container(
+              width: 65,
+              height: 85,
+              alignment: Alignment.topCenter,
+              child: Container(
+                height: 65,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(32.5),
+                    color: const Color(0xff376AED),
+                    border: Border.all(color: Colors.white, width: 4)),
+                child: Image.asset('assets/img/icons/plus.png'),
+              ),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class BottomNavigationItem extends StatelessWidget {
+  final String iconFileName;
+  final String activeIconFileName;
+  final String title;
+
+  const BottomNavigationItem(
+      {super.key,
+      required this.iconFileName,
+      required this.activeIconFileName,
+      required this.title});
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset('assets/img/icons/$iconFileName'),
+        const SizedBox(
+          height: 4,
+        ),
+        Text(
+          title,
+          style: Theme.of(context).textTheme.bodySmall,
+        )
+      ],
     );
   }
 }
