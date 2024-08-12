@@ -1,4 +1,6 @@
 import 'package:blogclub/data.dart';
+import 'package:blogclub/gen/assets.gen.dart';
+import 'package:blogclub/gen/fonts.gen.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,7 +18,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  static const defaultFontFamily = 'Avenir';
 
   // This widget is the root of your application.
   @override
@@ -29,39 +30,39 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         textTheme: TextTheme(
           titleMedium: TextStyle(
-              fontFamily: defaultFontFamily,
+              fontFamily: FontFamily.avenir,
               color: secondaryTextColor,
               fontWeight: FontWeight.w200,
               fontSize: 18),
           titleLarge: TextStyle(
-            fontFamily: defaultFontFamily,
+            fontFamily: FontFamily.avenir,
             fontWeight: FontWeight.bold,
             fontSize: 18,
             color: primaryTextColor,
           ),
           titleSmall: TextStyle(
-              fontFamily: defaultFontFamily,
+              fontFamily: FontFamily.avenir,
               color: primaryTextColor,
               fontWeight: FontWeight.w400,
               fontSize: 14),
           bodyMedium: TextStyle(
-            fontFamily: defaultFontFamily,
+            fontFamily: FontFamily.avenir,
             color: secondaryTextColor,
             fontSize: 12,
           ),
           bodySmall: const TextStyle(
-            fontFamily: defaultFontFamily,
+            fontFamily: FontFamily.avenir,
             fontWeight: FontWeight.w700,
             color: Color(0xff7B8BB2),
             fontSize: 10,
           ),
           headlineMedium: TextStyle(
-              fontFamily: defaultFontFamily,
+              fontFamily: FontFamily.avenir,
               fontSize: 24,
               color: primaryTextColor,
               fontWeight: FontWeight.w700),
           headlineSmall: TextStyle(
-              fontFamily: defaultFontFamily,
+              fontFamily: FontFamily.avenir,
               fontSize: 20,
               fontWeight: FontWeight.w700,
               color: primaryTextColor),
@@ -99,11 +100,7 @@ class HomeScreen extends StatelessWidget {
                       'Hi, Amin',
                       style: themeData.textTheme.titleMedium,
                     ),
-                    Image.asset(
-                      'assets/img/icons/notification.png',
-                      width: 32,
-                      height: 32,
-                    ),
+                  Assets.img.icons.notification.image(width: 32,height: 32),
                   ],
                 ),
               ),
@@ -402,7 +399,7 @@ class _Post extends StatelessWidget {
                   Text(
                     post.caption,
                     style: const TextStyle(
-                        fontFamily: MyApp.defaultFontFamily,
+                        fontFamily: FontFamily.avenir,
                         fontWeight: FontWeight.w700,
                         fontSize: 14,
                         color: Color(0xff376AED)),
