@@ -9,7 +9,10 @@ class OnBoardingScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Assets.img.background.onboarding.image(),
+          Padding(
+            padding: const EdgeInsets.only(top: 32,bottom: 32),
+            child: Assets.img.background.onboarding.image(),
+          ),
         ],
       ),
     );
