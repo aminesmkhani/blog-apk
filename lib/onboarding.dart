@@ -138,10 +138,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         ),
                       ),
                     ],
+              
                   ),
+                  
                 ),
               ],
             ),
+            // SizedBox(height: 35,)
           ],
         ),
       ),
