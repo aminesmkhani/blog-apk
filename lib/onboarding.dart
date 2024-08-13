@@ -1,5 +1,6 @@
 import 'package:blogclub/data.dart';
 import 'package:blogclub/gen/assets.gen.dart';
+import 'package:blogclub/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -13,10 +14,24 @@ class OnBoardingScreen extends StatefulWidget {
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final PageController _pageController = PageController();
+  final items = AppDatabase.onBoardingItems;
+  int page = 0;
+  @override
+  void initState() {
+    _pageController.addListener(() {
+      if (_pageController.page!.round() != page) {
+        setState(() {
+          page = _pageController.page!.round();
+          debugPrint('Onboarding: Selected Page -> $page');
+        });
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
-    final items = AppDatabase.onBoardingItems;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -54,9 +69,18 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(items[index].title,style: themeData.textTheme.headlineSmall,),
-                                  SizedBox(height: 16,),
-                                  Text(items[index].description,style: themeData.textTheme.titleSmall?.apply(fontSizeFactor: 0.8),),
+                                  Text(
+                                    items[index].title,
+                                    style: themeData.textTheme.headlineMedium,
+                                  ),
+                                  const SizedBox(
+                                    height: 16,
+                                  ),
+                                  Text(
+                                    items[index].description,
+                                    style: themeData.textTheme.titleSmall
+                                        ?.apply(fontSizeFactor: 0.9),
+                                  ),
                                 ],
                               ),
                             );
@@ -65,7 +89,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       ),
                       Container(
                         height: 60,
-                        padding: const EdgeInsets.only(left: 32,right: 32,bottom: 8),
+                        padding: const EdgeInsets.only(
+                            left: 32, right: 32, bottom: 8),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -80,7 +105,19 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                       .withOpacity(0.2)),
                             ),
                             ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  if (page == items.length - 1) {
+                                    Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const HomeScreen()));
+                                  } else {
+                                    _pageController.animateToPage(page + 1,
+                                        duration:
+                                            const Duration(milliseconds: 500),
+                                        curve: Curves.decelerate);
+                                  }
+                                },
                                 style: ButtonStyle(
                                   backgroundColor: WidgetStateProperty.all(
                                       themeData.primaryColor),
@@ -91,10 +128,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                           borderRadius:
                                               BorderRadius.circular(12))),
                                 ),
-                                child: const Icon(
-                                  CupertinoIcons.arrow_right,
+                                child: Icon(
                                   color: Colors.white,
-                                ))
+                                  page == items.length - 1
+                                      ? CupertinoIcons.check_mark
+                                      : CupertinoIcons.arrow_right,
+                                )),
                           ],
                         ),
                       ),
