@@ -20,11 +20,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var primaryTextColor = const Color(0xff0D253C);
-     var secondaryTextColor =  const Color(0xff2D4379);
+    var secondaryTextColor = const Color(0xff2D4379);
+    const primaryColor = Color(0xff376AED);
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+         textButtonTheme: TextButtonThemeData(
+            style: ButtonStyle(
+                textStyle: WidgetStateProperty.all(const TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+          fontFamily: FontFamily.avenir,
+        )))),
+        colorScheme: ColorScheme.light(
+            primary: primaryColor,
+            onPrimary: Colors.white,
+            onSurface: primaryTextColor,
+            surface: Colors.white,
+            ),
         textTheme: TextTheme(
           titleMedium: TextStyle(
               fontFamily: FontFamily.avenir,
