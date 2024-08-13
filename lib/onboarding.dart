@@ -27,46 +27,76 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 child: Assets.img.background.onboarding.image(),
               ),
             ),
-            Container(
-              height: 324,
-              decoration: BoxDecoration(
-                  color: themeData.colorScheme.surface,
-                  boxShadow: [
-                    BoxShadow(
-                        blurRadius: 20, color: Colors.black.withOpacity(0.1))
-                  ],
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(32),
-                    topRight: Radius.circular(32),
-                  )),
-              child: Column(
-                children: [
-                  Container(
-                    height: 60,
-                    child: Row(
-                      children: [
-                        SmoothPageIndicator(
-                            controller: _pageController, count: items.length),
-                        ElevatedButton(
-                            onPressed: () {},
-                            style: ButtonStyle(
-                              backgroundColor: WidgetStateProperty.all(
-                                  themeData.primaryColor),
-                              minimumSize:
-                                  WidgetStateProperty.all(Size(84, 60)),
-                              shape: WidgetStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12))),
-                            ),
-                            child: const Icon(
-                              CupertinoIcons.arrow_right,
-                              color: Colors.white,
-                            ))
+            Column(
+              children: [
+                Container(
+                  height: 324,
+                  decoration: BoxDecoration(
+                      color: themeData.colorScheme.surface,
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 20,
+                            color: Colors.black.withOpacity(0.1))
                       ],
-                    ),
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(32),
+                        topRight: Radius.circular(32),
+                      )),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: PageView.builder(
+                          itemCount: items.length,
+                          controller: _pageController,
+                          itemBuilder: (context, index) {
+                            return Column(
+                              children: [
+                                Text(items[index].title,style: themeData.textTheme.headlineSmall,),
+                                Text(items[index].description,style: themeData.textTheme.titleSmall?.apply(fontSizeFactor: 0.8),),
+                              ],
+                            );
+                          },
+                        ),
+                      ),
+                      Container(
+                        height: 60,
+                        padding: EdgeInsets.only(left: 32, right: 32),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SmoothPageIndicator(
+                              controller: _pageController,
+                              count: items.length,
+                              effect: ExpandingDotsEffect(
+                                  dotWidth: 8,
+                                  dotHeight: 8,
+                                  activeDotColor: themeData.colorScheme.primary,
+                                  dotColor: themeData.colorScheme.primary
+                                      .withOpacity(0.2)),
+                            ),
+                            ElevatedButton(
+                                onPressed: () {},
+                                style: ButtonStyle(
+                                  backgroundColor: WidgetStateProperty.all(
+                                      themeData.primaryColor),
+                                  minimumSize:
+                                      WidgetStateProperty.all(Size(84, 60)),
+                                  shape: WidgetStateProperty.all(
+                                      RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(12))),
+                                ),
+                                child: const Icon(
+                                  CupertinoIcons.arrow_right,
+                                  color: Colors.white,
+                                ))
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),
