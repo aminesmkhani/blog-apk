@@ -14,7 +14,7 @@ class OnBoardingScreen extends StatelessWidget {
           children: [
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.only(top: 32, bottom: 32),
+                padding: const EdgeInsets.only(top: 32, bottom: 8),
                 child: Assets.img.background.onboarding.image(),
               ),
             ),
@@ -26,11 +26,20 @@ class OnBoardingScreen extends StatelessWidget {
                     BoxShadow(
                         blurRadius: 20, color: Colors.black.withOpacity(0.1))
                   ],
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(32),
                     topRight: Radius.circular(32),
                   )),
-            )
+
+                  child: Column(children: [
+                    Container(
+                      height: 60,
+                      child: Row(
+                        
+                      ),
+                    ),
+                  ],),
+            ),
           ],
         ),
       ),
