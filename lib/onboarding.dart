@@ -14,6 +14,11 @@ class OnBoardingScreen extends StatelessWidget {
               padding: const EdgeInsets.only(top: 32,bottom: 32),
               child: Assets.img.background.onboarding.image(),
             ),
+            Expanded(child: Container(
+              decoration: BoxDecoration(
+                
+              ),
+            ),)
           ],
         ),
       ),
