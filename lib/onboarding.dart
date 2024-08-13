@@ -7,13 +7,15 @@ class OnBoardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 32,bottom: 32),
-            child: Assets.img.background.onboarding.image(),
-          ),
-        ],
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 32,bottom: 32),
+              child: Assets.img.background.onboarding.image(),
+            ),
+          ],
+        ),
       ),
     );
   }
