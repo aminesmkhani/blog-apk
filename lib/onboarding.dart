@@ -30,7 +30,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             Column(
               children: [
                 Container(
-                  height: 324,
+                  height: 260,
                   decoration: BoxDecoration(
                       color: themeData.colorScheme.surface,
                       boxShadow: [
@@ -49,18 +49,23 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           itemCount: items.length,
                           controller: _pageController,
                           itemBuilder: (context, index) {
-                            return Column(
-                              children: [
-                                Text(items[index].title,style: themeData.textTheme.headlineSmall,),
-                                Text(items[index].description,style: themeData.textTheme.titleSmall?.apply(fontSizeFactor: 0.8),),
-                              ],
+                            return Padding(
+                              padding: const EdgeInsets.all(32),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(items[index].title,style: themeData.textTheme.headlineSmall,),
+                                  SizedBox(height: 16,),
+                                  Text(items[index].description,style: themeData.textTheme.titleSmall?.apply(fontSizeFactor: 0.8),),
+                                ],
+                              ),
                             );
                           },
                         ),
                       ),
                       Container(
                         height: 60,
-                        padding: EdgeInsets.only(left: 32, right: 32),
+                        padding: const EdgeInsets.only(left: 32,right: 32,bottom: 8),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
