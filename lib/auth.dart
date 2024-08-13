@@ -6,13 +6,22 @@ class AuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
     return Scaffold(
-      body: Column(children: [
-        Assets.img.icons.logo.svg(),
-        Container(
-            
+      body: SafeArea(
+        child: Column(
+          children: [
+            Assets.img.icons.logo.svg(),
+            Container(
+              decoration: BoxDecoration(
+                color: themeData.
+                colorScheme.primary,
+                
+                ),
+            ),
+          ],
         ),
-      ],),
+      ),
     );
   }
 }
