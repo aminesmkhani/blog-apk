@@ -28,7 +28,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.light(
           primary: primaryColor,
           onPrimary: Colors.white,
-          onSurface: primaryTextColor
+          onSurface: primaryTextColor,
+          background: const Color(0xffFBFCFF),
+          surface: Colors.white
           ),
         textTheme: TextTheme(
           titleMedium: TextStyle(
