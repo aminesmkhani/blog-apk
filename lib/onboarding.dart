@@ -1,3 +1,4 @@
+import 'package:blogclub/data.dart';
 import 'package:blogclub/gen/assets.gen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,10 +12,11 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
-  final PageController _pageController= PageController();
+  final PageController _pageController = PageController();
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
+    final items = AppDatabase.onBoardingItems;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -43,12 +45,15 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     height: 60,
                     child: Row(
                       children: [
-                        SmoothPageIndicator(controller: _pageController, count: 2),
+                        SmoothPageIndicator(
+                            controller: _pageController, count: items.length),
                         ElevatedButton(
                             onPressed: () {},
                             style: ButtonStyle(
-                              backgroundColor: WidgetStateProperty.all(themeData.primaryColor),
-                              minimumSize: WidgetStateProperty.all(Size(84, 60)),
+                              backgroundColor: WidgetStateProperty.all(
+                                  themeData.primaryColor),
+                              minimumSize:
+                                  WidgetStateProperty.all(Size(84, 60)),
                               shape: WidgetStateProperty.all(
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12))),
