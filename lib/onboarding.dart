@@ -1,10 +1,17 @@
 import 'package:blogclub/gen/assets.gen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class OnBoardingScreen extends StatelessWidget {
+class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
 
+  @override
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
+}
+
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
+  final PageController _pageController= PageController();
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
@@ -36,6 +43,7 @@ class OnBoardingScreen extends StatelessWidget {
                     height: 60,
                     child: Row(
                       children: [
+                        SmoothPageIndicator(controller: _pageController, count: 2),
                         ElevatedButton(
                             onPressed: () {},
                             style: ButtonStyle(
