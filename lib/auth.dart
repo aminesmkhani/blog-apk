@@ -1,3 +1,4 @@
+import 'package:blogclub/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 
 class AuthScreen extends StatelessWidget {
@@ -5,8 +6,13 @@ class AuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.green,
+    return Scaffold(
+      body: Column(children: [
+        Assets.img.icons.logo.svg(),
+        Container(
+            
+        ),
+      ],),
     );
   }
 }
