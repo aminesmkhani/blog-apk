@@ -25,13 +25,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+         textButtonTheme: TextButtonThemeData(
+            style: ButtonStyle(
+                textStyle: WidgetStateProperty.all(const TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+          fontFamily: FontFamily.avenir,
+        )))),
         colorScheme: ColorScheme.light(
-          primary: primaryColor,
-          onPrimary: Colors.white,
-          onSurface: primaryTextColor,
-          background: const Color(0xffFBFCFF),
-          surface: Colors.white
-          ),
+            primary: primaryColor,
+            onPrimary: Colors.white,
+            onSurface: primaryTextColor,
+            surface: Colors.white,
+            ),
         textTheme: TextTheme(
           titleMedium: TextStyle(
               fontFamily: FontFamily.avenir,

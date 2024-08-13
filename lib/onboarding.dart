@@ -1,4 +1,5 @@
 import 'package:blogclub/gen/assets.gen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingScreen extends StatelessWidget {
@@ -8,7 +9,6 @@ class OnBoardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
     return Scaffold(
-      backgroundColor: themeData.colorScheme.background,
       body: SafeArea(
         child: Column(
           children: [
@@ -30,15 +30,30 @@ class OnBoardingScreen extends StatelessWidget {
                     topLeft: Radius.circular(32),
                     topRight: Radius.circular(32),
                   )),
-
-                  child: Column(children: [
-                    Container(
-                      height: 60,
-                      child: Row(
-                        
-                      ),
+              child: Column(
+                children: [
+                  Container(
+                    height: 60,
+                    child: Row(
+                      children: [
+                        ElevatedButton(
+                            onPressed: () {},
+                            style: ButtonStyle(
+                              backgroundColor: WidgetStateProperty.all(themeData.primaryColor),
+                              minimumSize: WidgetStateProperty.all(Size(84, 60)),
+                              shape: WidgetStateProperty.all(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12))),
+                            ),
+                            child: const Icon(
+                              CupertinoIcons.arrow_right,
+                              color: Colors.white,
+                            ))
+                      ],
                     ),
-                  ],),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
