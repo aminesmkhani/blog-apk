@@ -36,7 +36,8 @@ class MyApp extends StatelessWidget {
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.white,
           foregroundColor: primaryTextColor,
-          elevation: 0
+          elevation: 0,
+          titleSpacing: 32
           ),
         colorScheme: ColorScheme.light(
             primary: primaryColor,
