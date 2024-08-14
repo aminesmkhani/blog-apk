@@ -16,26 +16,31 @@ class ArticleScreen extends StatelessWidget {
           color: themeData.colorScheme.primary,
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
-              BoxShadow(
+            BoxShadow(
                 blurRadius: 20,
-                color: themeData.colorScheme.primary.withOpacity(0.5)
-              ),
+                color: themeData.colorScheme.primary.withOpacity(0.5)),
           ],
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Assets.img.icons.thumbs.svg(),
-            const SizedBox(width: 8,),
-            Text(
-              '2.1 k',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight:FontWeight.w400 ,
-                color: themeData.colorScheme.onPrimary
-                ),
+        child: InkWell(
+          onTap: () {
+            showSnackBar(context, "Liked!");
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Assets.img.icons.thumbs.svg(),
+              const SizedBox(
+                width: 8,
               ),
-          ],
+              Text(
+                '2.1 k',
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    color: themeData.colorScheme.onPrimary),
+              ),
+            ],
+          ),
         ),
       ),
       appBar: AppBar(
@@ -120,5 +125,10 @@ class ArticleScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void showSnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
   }
 }
