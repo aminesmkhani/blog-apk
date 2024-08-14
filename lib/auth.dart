@@ -71,15 +71,15 @@ class AuthScreen extends StatelessWidget {
                                   style: themeData.textTheme.titleMedium!
                                       .apply(fontSizeFactor: 0.8),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 16,
                                 ),
-                                TextField(
+                                const TextField(
                                   decoration:
                                       InputDecoration(label: Text('UserName')),
                                 ),
-                                PasswordTextField(),
-                                SizedBox(
+                                const PasswordTextField(),
+                                const SizedBox(
                                   height: 24,
                                 ),
                                 ElevatedButton(
@@ -99,12 +99,12 @@ class AuthScreen extends StatelessWidget {
                                     onPressed: () {},
                                     child: Text(
                                       'Login'.toUpperCase(),
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontFamily: FontFamily.avenir,
                                         color: Colors.white,
                                       ),
                                     )),
-                                SizedBox(
+                                const SizedBox(
                                   height: 8,
                                 ),
                                 Row(
@@ -113,7 +113,7 @@ class AuthScreen extends StatelessWidget {
                                     const Text(
                                       'Forgot your password?',
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 8,
                                     ),
                                     TextButton(
@@ -121,14 +121,14 @@ class AuthScreen extends StatelessWidget {
                                         child: const Text('Reset Here')),
                                   ],
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
-                                Center(
+                                const Center(
                                   child: Text('OR SIGN IN WITH',
                                       style: TextStyle(letterSpacing: 2)),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 16,
                                 ),
                                 Row(
@@ -136,12 +136,12 @@ class AuthScreen extends StatelessWidget {
                                   children: [
                                     Assets.img.icons.google
                                         .image(width: 36, height: 36),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 30,
                                     ),
                                     Assets.img.icons.facebook
                                         .image(width: 36, height: 36),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 30,
                                     ),
                                     Assets.img.icons.twitter
