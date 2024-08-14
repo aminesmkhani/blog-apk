@@ -56,17 +56,21 @@ class ArticleScreen extends StatelessWidget {
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: Icon(CupertinoIcons.bookmark),
+                  icon: const Icon(CupertinoIcons.bookmark),
                   color: themeData.colorScheme.primary,
                 ),
                 IconButton(
                   onPressed: (){},
-                  icon: Icon(CupertinoIcons.share),
+                  icon: const Icon(CupertinoIcons.share),
                   color: themeData.colorScheme.primary,
                   ),
               ],
             ),
+
           ),
+          ClipRRect(
+            borderRadius: const BorderRadius.only(topLeft: Radius.circular(32),topRight:Radius.circular(32) ),
+            child: Assets.img.background.singlePost.image(),),
         ],
       ),
     );
