@@ -90,13 +90,17 @@ class ArticleScreen extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    onPressed: () {},
-                    icon: const Icon(CupertinoIcons.bookmark),
+                    onPressed: () {
+                      showSnackBar(context, 'Share SocialNetworks');
+                    },
+                    icon: const Icon(CupertinoIcons.share),
                     color: themeData.colorScheme.primary,
                   ),
                   IconButton(
-                    onPressed: () {},
-                    icon: const Icon(CupertinoIcons.share),
+                    onPressed: () {
+                      showSnackBar(context, 'BookMark Saved');
+                    },
+                    icon: const Icon(CupertinoIcons.bookmark),
                     color: themeData.colorScheme.primary,
                   ),
                 ],
