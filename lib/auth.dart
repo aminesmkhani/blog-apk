@@ -58,98 +58,7 @@ class AuthScreen extends StatelessWidget {
                         child: SingleChildScrollView(
                           child: Padding(
                             padding: const EdgeInsets.all(32),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Welcome Back',
-                                    style: themeData.textTheme.headlineMedium),
-                                const SizedBox(
-                                  height: 12,
-                                ),
-                                Text(
-                                  'Sign in with your account',
-                                  style: themeData.textTheme.titleMedium!
-                                      .apply(fontSizeFactor: 0.8),
-                                ),
-                                const SizedBox(
-                                  height: 16,
-                                ),
-                                const TextField(
-                                  decoration:
-                                      InputDecoration(label: Text('UserName')),
-                                ),
-                                const PasswordTextField(),
-                                const SizedBox(
-                                  height: 24,
-                                ),
-                                ElevatedButton(
-                                    style: ButtonStyle(
-                                      minimumSize: WidgetStateProperty.all(
-                                        Size(MediaQuery.of(context).size.width,
-                                            60),
-                                      ),
-                                      shape: WidgetStateProperty.all(
-                                        RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(12)),
-                                      ),
-                                      backgroundColor: WidgetStateProperty.all(
-                                          themeData.primaryColor),
-                                    ),
-                                    onPressed: () {},
-                                    child: Text(
-                                      'Login'.toUpperCase(),
-                                      style: const TextStyle(
-                                        fontFamily: FontFamily.avenir,
-                                        color: Colors.white,
-                                      ),
-                                    )),
-                                const SizedBox(
-                                  height: 8,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      'Forgot your password?',
-                                    ),
-                                    const SizedBox(
-                                      width: 8,
-                                    ),
-                                    TextButton(
-                                        onPressed: () {},
-                                        child: const Text('Reset Here')),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                const Center(
-                                  child: Text('OR SIGN IN WITH',
-                                      style: TextStyle(letterSpacing: 2)),
-                                ),
-                                const SizedBox(
-                                  height: 16,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Assets.img.icons.google
-                                        .image(width: 36, height: 36),
-                                    const SizedBox(
-                                      width: 30,
-                                    ),
-                                    Assets.img.icons.facebook
-                                        .image(width: 36, height: 36),
-                                    const SizedBox(
-                                      width: 30,
-                                    ),
-                                    Assets.img.icons.twitter
-                                        .image(width: 36, height: 36),
-                                  ],
-                                ),
-                              ],
-                            ),
+                            child: _Login(themeData: themeData),
                           ),
                         ),
                       ),
@@ -161,6 +70,205 @@ class AuthScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class _Login extends StatelessWidget {
+  const _Login({
+    super.key,
+    required this.themeData,
+  });
+
+  final ThemeData themeData;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('Welcome Back',
+            style: themeData.textTheme.headlineMedium),
+        const SizedBox(
+          height: 12,
+        ),
+        Text(
+          'Sign in with your account',
+          style: themeData.textTheme.titleMedium!
+              .apply(fontSizeFactor: 0.8),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        const TextField(
+          decoration:
+              InputDecoration(label: Text('UserName')),
+        ),
+        const PasswordTextField(),
+        const SizedBox(
+          height: 24,
+        ),
+        ElevatedButton(
+            style: ButtonStyle(
+              minimumSize: WidgetStateProperty.all(
+                Size(MediaQuery.of(context).size.width,
+                    60),
+              ),
+              shape: WidgetStateProperty.all(
+                RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(12)),
+              ),
+              backgroundColor: WidgetStateProperty.all(
+                  themeData.primaryColor),
+            ),
+            onPressed: () {},
+            child: Text(
+              'Login'.toUpperCase(),
+              style: const TextStyle(
+                fontFamily: FontFamily.avenir,
+                color: Colors.white,
+              ),
+            )),
+        const SizedBox(
+          height: 8,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Forgot your password?',
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            TextButton(
+                onPressed: () {},
+                child: const Text('Reset Here')),
+          ],
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        const Center(
+          child: Text('OR SIGN IN WITH',
+              style: TextStyle(letterSpacing: 2)),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Assets.img.icons.google
+                .image(width: 36, height: 36),
+            const SizedBox(
+              width: 30,
+            ),
+            Assets.img.icons.facebook
+                .image(width: 36, height: 36),
+            const SizedBox(
+              width: 30,
+            ),
+            Assets.img.icons.twitter
+                .image(width: 36, height: 36),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+
+class _SignUp extends StatelessWidget {
+  const _SignUp({
+    super.key,
+    required this.themeData,
+  });
+
+  final ThemeData themeData;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('Welcome to Blog Club',
+            style: themeData.textTheme.headlineMedium),
+        const SizedBox(
+          height: 12,
+        ),
+        Text(
+          'Please Enter your Information',
+          style: themeData.textTheme.titleMedium!
+              .apply(fontSizeFactor: 0.8),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        const TextField(
+          decoration:
+              InputDecoration(label: Text('Full Name')),
+        ), 
+        const TextField(
+          decoration:
+              InputDecoration(label: Text('UserName')),
+        ),
+        const PasswordTextField(),
+        const SizedBox(
+          height: 24,
+        ),
+        ElevatedButton(
+            style: ButtonStyle(
+              minimumSize: WidgetStateProperty.all(
+                Size(MediaQuery.of(context).size.width,
+                    60),
+              ),
+              shape: WidgetStateProperty.all(
+                RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(12)),
+              ),
+              backgroundColor: WidgetStateProperty.all(
+                  themeData.primaryColor),
+            ),
+            onPressed: () {},
+            child: Text(
+              'Sign Up'.toUpperCase(),
+              style: const TextStyle(
+                fontFamily: FontFamily.avenir,
+                color: Colors.white,
+              ),
+            )),
+    
+        const SizedBox(
+          height: 20,
+        ),
+        const Center(
+          child: Text('OR SIGN UP WITH',
+              style: TextStyle(letterSpacing: 2)),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Assets.img.icons.google
+                .image(width: 36, height: 36),
+            const SizedBox(
+              width: 30,
+            ),
+            Assets.img.icons.facebook
+                .image(width: 36, height: 36),
+            const SizedBox(
+              width: 30,
+            ),
+            Assets.img.icons.twitter
+                .image(width: 36, height: 36),
+          ],
+        ),
+      ],
     );
   }
 }
