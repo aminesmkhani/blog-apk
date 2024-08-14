@@ -9,8 +9,37 @@ class ArticleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
     return Scaffold(
+      floatingActionButton: Container(
+        width: 111,
+        height: 48,
+        decoration: BoxDecoration(
+          color: themeData.colorScheme.primary,
+          borderRadius: BorderRadius.circular(12),
+          boxShadow: [
+              BoxShadow(
+                blurRadius: 20,
+                color: themeData.colorScheme.primary.withOpacity(0.5)
+              ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Assets.img.icons.thumbs.svg(),
+            const SizedBox(width: 8,),
+            Text(
+              '2.1 k',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight:FontWeight.w400 ,
+                color: themeData.colorScheme.onPrimary
+                ),
+              ),
+          ],
+        ),
+      ),
       appBar: AppBar(
-        title: Text('Article'),
+        title: const Text('Article'),
         actions: [
           IconButton(onPressed: () {}, icon: Icon(Icons.more_horiz_rounded)),
           const SizedBox(
