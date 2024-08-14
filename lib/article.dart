@@ -9,6 +9,11 @@ class ArticleScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Article'),
+        actions: [
+          IconButton(onPressed: (){
+
+          }, icon: Icon(Icons.more_horiz_rounded))
+        ],
       ),
       body: Column(
         children: [
