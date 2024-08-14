@@ -5,8 +5,21 @@ class ArticleScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blue,
+    final themeData = Theme.of(context);
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Article'),
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(32),
+            child: Text('Four Things Every Woman Needs To Know',
+              style: themeData.textTheme.headlineMedium,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
