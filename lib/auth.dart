@@ -54,13 +54,13 @@ class AuthScreen extends StatelessWidget {
                             color: themeData.colorScheme.surface),
                         child: Column(
                           children: [
-                            Text('Welcome Back'),
-                            Text('Sign in with your account'),
-                            TextField(
+                            const Text('Welcome Back'),
+                            const Text('Sign in with your account'),
+                            const TextField(
                               decoration:
                                   InputDecoration(label: Text('UserName')),
                             ),
-                            TextField(
+                            const TextField(
                               decoration:
                                   InputDecoration(label: Text('Password')),
                             ),
@@ -70,12 +70,20 @@ class AuthScreen extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text('Forgot your password?'),
+                                const Text('Forgot your password?'),
                                 TextButton(
                                     onPressed: () {},
-                                    child: Text('Reset Here')),
+                                    child: const Text('Reset Here')),
                               ],
                             ),
+                            Center(
+                              child: Text('OR SIGN IN WITH',),
+                            ),
+                            Row(children: [
+                              Assets.img.icons.google.image(),
+                              Assets.img.icons.facebook.image(),
+                              Assets.img.icons.twitter.image(),
+                            ],),
                           ],
                         ),
                       ),
