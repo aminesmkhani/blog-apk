@@ -1,3 +1,4 @@
+import 'package:blogclub/article.dart';
 import 'package:blogclub/gen/fonts.gen.dart';
 import 'package:blogclub/home.dart';
 import 'package:blogclub/splash.dart';
@@ -83,7 +84,7 @@ class MyApp extends StatelessWidget {
       //   const Positioned.fill(child: HomeScreen()),
       //   Positioned(bottom: 0, right: 0, left: 0, child: _BottomNavigation())
       // ]),
-      home: const SplashScreen(),
+      home: const ArticleScreen(),
     );
   }
 }
