@@ -39,6 +39,10 @@ class MyApp extends StatelessWidget {
           elevation: 0,
           titleSpacing: 32
           ),
+        snackBarTheme: const SnackBarThemeData(
+          backgroundColor: primaryColor,
+
+        ),  
         colorScheme: ColorScheme.light(
             primary: primaryColor,
             onPrimary: Colors.white,
