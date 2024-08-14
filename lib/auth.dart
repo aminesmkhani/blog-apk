@@ -46,56 +46,63 @@ class AuthScreen extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(32),
-                                topRight: Radius.circular(32)),
-                            color: themeData.colorScheme.surface),
-                        child: Padding(
-                          padding: const EdgeInsets.all(32),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                               Text(
-                                'Welcome Back',
-                                style: themeData.textTheme.headlineMedium
+                      child: SingleChildScrollView(
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(32),
+                                  topRight: Radius.circular(32)),
+                              color: themeData.colorScheme.surface),
+                          child: Padding(
+                            padding: const EdgeInsets.all(32),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                 Text(
+                                  'Welcome Back',
+                                  style: themeData.textTheme.headlineMedium
+                                  ),
+                                  const SizedBox(height: 12,),
+                                 Text('Sign in with your account',style: themeData.textTheme.titleMedium!.apply(fontSizeFactor: 0.8),),
+                                  SizedBox(height: 16,),
+                                 TextField(
+                                  decoration:
+                                      InputDecoration(label: Text('UserName')),
                                 ),
-                                const SizedBox(height: 12,),
-                               Text('Sign in with your account',style: themeData.textTheme.titleMedium!.apply(fontSizeFactor: 0.8),),
-                                SizedBox(height: 16,),
-                               TextField(
-                                decoration:
-                                    InputDecoration(label: Text('UserName')),
-                              ),
-                               TextField(
-                                obscureText: true,
-                                enableSuggestions: false,
-                                autocorrect: false,
-                                decoration:
-                                    InputDecoration(label: Text('Password')),
-                              ),
-                              ElevatedButton(
-                                  onPressed: () {},
-                                  child: Text('Login'.toUpperCase())),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text('Forgot your password?'),
-                                  TextButton(
-                                      onPressed: () {},
-                                      child: const Text('Reset Here')),
-                                ],
-                              ),
-                              Center(
-                                child: Text('OR SIGN IN WITH',),
-                              ),
-                              Row(children: [
-                                Assets.img.icons.google.image(),
-                                Assets.img.icons.facebook.image(),
-                                Assets.img.icons.twitter.image(),
-                              ],),
-                            ],
+                                 TextField(
+                                  obscureText: true,
+                                  enableSuggestions: false,
+                                  autocorrect: false,
+                                  decoration:
+                                      InputDecoration(label: Text('Password')),
+                                ),
+                                ElevatedButton(
+                                    onPressed: () {},
+                                    child: Text('Login'.toUpperCase())),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text('Forgot your password?'),
+                                    TextButton(
+                                        onPressed: () {},
+                                        child: const Text('Reset Here')),
+                                  ],
+                                ),
+                                Center(
+                                  child: Text('OR SIGN IN WITH',),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                  Assets.img.icons.google.image(width: 36,height: 36),
+                                  SizedBox(width: 30,),
+                                  Assets.img.icons.facebook.image(width: 36,height: 36),
+                                  SizedBox(width: 30,),
+                                  Assets.img.icons.twitter.image(width: 36,height: 36),
+                                
+                                ],),
+                              ],
+                            ),
                           ),
                         ),
                       ),
