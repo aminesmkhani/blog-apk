@@ -78,21 +78,7 @@ class AuthScreen extends StatelessWidget {
                                   decoration:
                                       InputDecoration(label: Text('UserName')),
                                 ),
-                                TextField(
-                                  obscureText: true,
-                                  enableSuggestions: false,
-                                  autocorrect: false,
-                                  decoration: InputDecoration(
-                                    label: Text('Password'),
-                                    suffixIcon: TextButton(
-                                      style: ButtonStyle(
-                                        tapTargetSize: MaterialTapTargetSize.shrinkWrap
-                                      ),
-                                      onPressed: () {},
-                                      child: Text('Show'),
-                                    ),
-                                  ),
-                                ),
+                                PasswordTextField(),
                                 SizedBox(
                                   height: 24,
                                 ),
@@ -118,24 +104,33 @@ class AuthScreen extends StatelessWidget {
                                         color: Colors.white,
                                       ),
                                     )),
+                                SizedBox(
+                                  height: 8,
+                                ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    const Text('Forgot your password?',),
-                                    SizedBox(width: 8,),
+                                    const Text(
+                                      'Forgot your password?',
+                                    ),
+                                    SizedBox(
+                                      width: 8,
+                                    ),
                                     TextButton(
                                         onPressed: () {},
                                         child: const Text('Reset Here')),
                                   ],
                                 ),
-                                SizedBox(height: 20,),
-                                Center(
-                                  child: Text(
-                                    'OR SIGN IN WITH',
-                                    style: TextStyle(letterSpacing: 2)
-                                  ),
+                                SizedBox(
+                                  height: 20,
                                 ),
-                                SizedBox(height: 20,),
+                                Center(
+                                  child: Text('OR SIGN IN WITH',
+                                      style: TextStyle(letterSpacing: 2)),
+                                ),
+                                SizedBox(
+                                  height: 16,
+                                ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -164,6 +159,41 @@ class AuthScreen extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class PasswordTextField extends StatefulWidget {
+  const PasswordTextField({
+    super.key,
+  });
+
+  @override
+  State<PasswordTextField> createState() => _PasswordTextFieldState();
+}
+
+class _PasswordTextFieldState extends State<PasswordTextField> {
+  var obsecureText = true;
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      obscureText: obsecureText,
+      enableSuggestions: false,
+      autocorrect: false,
+      decoration: InputDecoration(
+        label: const Text('Password'),
+        suffixIcon: TextButton(
+          style: const ButtonStyle(tapTargetSize: MaterialTapTargetSize.shrinkWrap),
+          onPressed: () {
+            setState(() {
+              obsecureText = !obsecureText;
+            });
+          },
+          child: Text(
+            obsecureText? 'Show':'Hide',
+         ),
         ),
       ),
     );
