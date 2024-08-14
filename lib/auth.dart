@@ -46,13 +46,40 @@ class AuthScreen extends StatelessWidget {
                       ),
                     ),
                     Expanded(
-                        child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(32),
-                              topRight: Radius.circular(32)),
-                          color: themeData.colorScheme.surface),
-                    )),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(32),
+                                topRight: Radius.circular(32)),
+                            color: themeData.colorScheme.surface),
+                        child: Column(
+                          children: [
+                            Text('Welcome Back'),
+                            Text('Sign in with your account'),
+                            TextField(
+                              decoration:
+                                  InputDecoration(label: Text('UserName')),
+                            ),
+                            TextField(
+                              decoration:
+                                  InputDecoration(label: Text('Password')),
+                            ),
+                            ElevatedButton(
+                                onPressed: () {},
+                                child: Text('Login'.toUpperCase())),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('Forgot your password?'),
+                                TextButton(
+                                    onPressed: () {},
+                                    child: Text('Reset Here')),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
