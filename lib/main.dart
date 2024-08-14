@@ -33,6 +33,11 @@ class MyApp extends StatelessWidget {
           fontWeight: FontWeight.w400,
           fontFamily: FontFamily.avenir,
         )))),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.white,
+          foregroundColor: primaryTextColor,
+          elevation: 0
+          ),
         colorScheme: ColorScheme.light(
             primary: primaryColor,
             onPrimary: Colors.white,
