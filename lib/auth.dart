@@ -4,12 +4,22 @@ import 'package:blogclub/gen/assets.gen.dart';
 import 'package:blogclub/gen/fonts.gen.dart';
 import 'package:flutter/material.dart';
 
-class AuthScreen extends StatelessWidget {
+class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
+
+  @override
+  State<AuthScreen> createState() => _AuthScreenState();
+}
+
+class _AuthScreenState extends State<AuthScreen> {
+  static const int loginTab = 0;
+  static const int signUpTab = 1;
+  int selectedTabIndex = loginTab;
 
   @override
   Widget build(BuildContext context) {
     final ThemeData themeData = Theme.of(context);
+    // final tabOpacity=selectedTabIndex==
     final tabTextStyle = TextStyle(
         color: themeData.colorScheme.onPrimary,
         fontSize: 18,
@@ -37,13 +47,33 @@ class AuthScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Text(
-                            'Login'.toUpperCase(),
-                            style: tabTextStyle,
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                selectedTabIndex = loginTab;
+                              });
+                            },
+                            child: Text(
+                              'Login'.toUpperCase(),
+                              style: tabTextStyle.apply(
+                                  color: selectedTabIndex == loginTab
+                                      ? Colors.white
+                                      : Colors.white54),
+                            ),
                           ),
-                          Text(
-                            'Register'.toUpperCase(),
-                            style: tabTextStyle,
+                          TextButton(
+                            onPressed: () {
+                              setState(() {
+                                selectedTabIndex = signUpTab;
+                              });
+                            },
+                            child: Text(
+                              'Sign Up'.toUpperCase(),
+                              style: tabTextStyle.apply(
+                                  color: selectedTabIndex == signUpTab
+                                      ? Colors.white
+                                      : Colors.white54),
+                            ),
                           ),
                         ],
                       ),
@@ -58,7 +88,9 @@ class AuthScreen extends StatelessWidget {
                         child: SingleChildScrollView(
                           child: Padding(
                             padding: const EdgeInsets.all(32),
-                            child: _Login(themeData: themeData),
+                            child: selectedTabIndex == loginTab
+                                ? _Login(themeData: themeData)
+                                : _SignUp(themeData: themeData),
                           ),
                         ),
                       ),
@@ -87,22 +119,19 @@ class _Login extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Welcome Back',
-            style: themeData.textTheme.headlineMedium),
+        Text('Welcome Back', style: themeData.textTheme.headlineMedium),
         const SizedBox(
           height: 12,
         ),
         Text(
           'Sign in with your account',
-          style: themeData.textTheme.titleMedium!
-              .apply(fontSizeFactor: 0.8),
+          style: themeData.textTheme.titleMedium!.apply(fontSizeFactor: 0.8),
         ),
         const SizedBox(
           height: 16,
         ),
         const TextField(
-          decoration:
-              InputDecoration(label: Text('UserName')),
+          decoration: InputDecoration(label: Text('UserName')),
         ),
         const PasswordTextField(),
         const SizedBox(
@@ -111,16 +140,12 @@ class _Login extends StatelessWidget {
         ElevatedButton(
             style: ButtonStyle(
               minimumSize: WidgetStateProperty.all(
-                Size(MediaQuery.of(context).size.width,
-                    60),
+                Size(MediaQuery.of(context).size.width, 60),
               ),
               shape: WidgetStateProperty.all(
-                RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(12)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               ),
-              backgroundColor: WidgetStateProperty.all(
-                  themeData.primaryColor),
+              backgroundColor: WidgetStateProperty.all(themeData.primaryColor),
             ),
             onPressed: () {},
             child: Text(
@@ -142,17 +167,14 @@ class _Login extends StatelessWidget {
             const SizedBox(
               width: 8,
             ),
-            TextButton(
-                onPressed: () {},
-                child: const Text('Reset Here')),
+            TextButton(onPressed: () {}, child: const Text('Reset Here')),
           ],
         ),
         const SizedBox(
           height: 20,
         ),
         const Center(
-          child: Text('OR SIGN IN WITH',
-              style: TextStyle(letterSpacing: 2)),
+          child: Text('OR SIGN IN WITH', style: TextStyle(letterSpacing: 2)),
         ),
         const SizedBox(
           height: 16,
@@ -160,25 +182,21 @@ class _Login extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Assets.img.icons.google
-                .image(width: 36, height: 36),
+            Assets.img.icons.google.image(width: 36, height: 36),
             const SizedBox(
               width: 30,
             ),
-            Assets.img.icons.facebook
-                .image(width: 36, height: 36),
+            Assets.img.icons.facebook.image(width: 36, height: 36),
             const SizedBox(
               width: 30,
             ),
-            Assets.img.icons.twitter
-                .image(width: 36, height: 36),
+            Assets.img.icons.twitter.image(width: 36, height: 36),
           ],
         ),
       ],
     );
   }
 }
-
 
 class _SignUp extends StatelessWidget {
   const _SignUp({
@@ -193,26 +211,22 @@ class _SignUp extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Welcome to Blog Club',
-            style: themeData.textTheme.headlineMedium),
+        Text('Welcome to Blog Club', style: themeData.textTheme.headlineMedium),
         const SizedBox(
           height: 12,
         ),
         Text(
           'Please Enter your Information',
-          style: themeData.textTheme.titleMedium!
-              .apply(fontSizeFactor: 0.8),
+          style: themeData.textTheme.titleMedium!.apply(fontSizeFactor: 0.8),
         ),
         const SizedBox(
           height: 16,
         ),
         const TextField(
-          decoration:
-              InputDecoration(label: Text('Full Name')),
-        ), 
+          decoration: InputDecoration(label: Text('Full Name')),
+        ),
         const TextField(
-          decoration:
-              InputDecoration(label: Text('UserName')),
+          decoration: InputDecoration(label: Text('UserName')),
         ),
         const PasswordTextField(),
         const SizedBox(
@@ -221,16 +235,12 @@ class _SignUp extends StatelessWidget {
         ElevatedButton(
             style: ButtonStyle(
               minimumSize: WidgetStateProperty.all(
-                Size(MediaQuery.of(context).size.width,
-                    60),
+                Size(MediaQuery.of(context).size.width, 60),
               ),
               shape: WidgetStateProperty.all(
-                RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(12)),
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               ),
-              backgroundColor: WidgetStateProperty.all(
-                  themeData.primaryColor),
+              backgroundColor: WidgetStateProperty.all(themeData.primaryColor),
             ),
             onPressed: () {},
             child: Text(
@@ -240,13 +250,11 @@ class _SignUp extends StatelessWidget {
                 color: Colors.white,
               ),
             )),
-    
         const SizedBox(
           height: 20,
         ),
         const Center(
-          child: Text('OR SIGN UP WITH',
-              style: TextStyle(letterSpacing: 2)),
+          child: Text('OR SIGN UP WITH', style: TextStyle(letterSpacing: 2)),
         ),
         const SizedBox(
           height: 16,
@@ -254,18 +262,15 @@ class _SignUp extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Assets.img.icons.google
-                .image(width: 36, height: 36),
+            Assets.img.icons.google.image(width: 36, height: 36),
             const SizedBox(
               width: 30,
             ),
-            Assets.img.icons.facebook
-                .image(width: 36, height: 36),
+            Assets.img.icons.facebook.image(width: 36, height: 36),
             const SizedBox(
               width: 30,
             ),
-            Assets.img.icons.twitter
-                .image(width: 36, height: 36),
+            Assets.img.icons.twitter.image(width: 36, height: 36),
           ],
         ),
       ],
@@ -299,12 +304,10 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
             });
           },
           child: Text(
-            obsecureText? 'Show':'Hide',
+            obsecureText ? 'Show' : 'Hide',
             style: TextStyle(
-              fontSize: 14,
-              color: Theme.of(context).colorScheme.primary
-            ),
-         ),
+                fontSize: 14, color: Theme.of(context).colorScheme.primary),
+          ),
         ),
       ),
     );
