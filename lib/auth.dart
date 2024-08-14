@@ -184,15 +184,18 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
       autocorrect: false,
       decoration: InputDecoration(
         label: const Text('Password'),
-        suffixIcon: TextButton(
-          style: const ButtonStyle(tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-          onPressed: () {
+        suffix: InkWell(
+          onTap: () {
             setState(() {
               obsecureText = !obsecureText;
             });
           },
           child: Text(
             obsecureText? 'Show':'Hide',
+            style: TextStyle(
+              fontSize: 14,
+              color: Theme.of(context).colorScheme.primary
+            ),
          ),
         ),
       ),
