@@ -27,22 +27,45 @@ class ArticleScreen extends StatelessWidget {
               style: themeData.textTheme.headlineMedium,
             ),
           ),
-          Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(12),
-                child: Assets.img.stories.story9
-                    .image(width: 48, height: 48, fit: BoxFit.cover),
-              ),
-              Column(
-                children: [
-                  Text('Richard Geravin'),
-                  Text('2m ago'),
-                ],
-              ),
-              Icon(CupertinoIcons.bookmark),
-              Icon(CupertinoIcons.share),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(right: 16, left: 32, bottom: 32),
+            child: Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Assets.img.stories.story9
+                      .image(width: 48, height: 48, fit: BoxFit.cover),
+                ),
+                const SizedBox(
+                  width: 16,
+                ),
+                 Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Richard Geravin',
+                        style: themeData.textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w400)
+                        ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      const Text('2m ago'),
+                    ],
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(CupertinoIcons.bookmark),
+                  color: themeData.colorScheme.primary,
+                ),
+                IconButton(
+                  onPressed: (){},
+                  icon: Icon(CupertinoIcons.share),
+                  color: themeData.colorScheme.primary,
+                  ),
+              ],
+            ),
           ),
         ],
       ),
