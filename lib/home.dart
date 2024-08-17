@@ -285,15 +285,15 @@ class _PostList extends StatelessWidget {
             physics: const ClampingScrollPhysics(),
             itemBuilder: (context, index) {
               final post = posts[index];
-              return _Post(post: post);
+              return Post(post: post);
             }),
       ],
     );
   }
 }
 
-class _Post extends StatelessWidget {
-  const _Post({
+class Post extends StatelessWidget {
+  const Post({
     required this.post,
   });
 

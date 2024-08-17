@@ -1,4 +1,6 @@
+import 'package:blogclub/data.dart';
 import 'package:blogclub/gen/assets.gen.dart';
+import 'package:blogclub/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -8,6 +10,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
+    final posts = AppDatabase.posts;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: themeData.colorScheme.surface.withOpacity(0),
@@ -230,6 +233,7 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                for (var i = 0; i < posts.length; i++) Post(post: posts[i]),
               ],
             ),
           ),
