@@ -22,6 +22,7 @@ class ProfileScreen extends StatelessWidget {
         ],
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             margin: EdgeInsets.fromLTRB(32, 0, 32, 32),
@@ -36,12 +37,14 @@ class ProfileScreen extends StatelessWidget {
               ]
             ),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
                     Assets.img.stories.story8.image(width: 84,height: 84),
                     Expanded(
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text('@jovieden'),
                           Text('Jovi Daniel'),
@@ -53,7 +56,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 Text('About me'),
                 Text('Madison Blackstone is a director of user experience design, with experience managing global teams.'),
-                
+
 
               ],
             ),
