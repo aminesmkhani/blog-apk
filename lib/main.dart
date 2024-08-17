@@ -119,21 +119,31 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: _BottomNavigation(
-        selectedIndex: selectedScreenIndex,
-        onTap: (int index) {
-          setState(() {
-            selectedScreenIndex = index;
-          });
-        },
-      ),
-      body: IndexedStack(
-        index: selectedScreenIndex,
+      
+      body: Stack(
         children: [
-          HomeScreen(),
-          ArticleScreen(),
-          SearchScreen(),
-          ProfileScreen()
+          IndexedStack(
+            index: selectedScreenIndex,
+            children: [
+              HomeScreen(),
+              ArticleScreen(),
+              SearchScreen(),
+              ProfileScreen()
+            ],
+          ),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            left: 0,
+            child: _BottomNavigation(
+                    selectedIndex: selectedScreenIndex,
+                    onTap: (int index) {
+            setState(() {
+              selectedScreenIndex = index;
+            });
+                    },
+                  ),
+          ),
         ],
       ),
     );
