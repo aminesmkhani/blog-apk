@@ -39,23 +39,39 @@ class ProfileScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Assets.img.stories.story8.image(width: 84,height: 84),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('@jovieden'),
-                          Text('Jovi Daniel'),
-                          Text('UX Designer'),
-                        ],
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
+                  child: Row(
+                    children: [
+                      ClipRRect(borderRadius:BorderRadius.circular(12) ,child: Assets.img.stories.story8.image(width: 84,height: 84)),
+                      SizedBox(width: 16,),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('@jovieden'),
+                            SizedBox(
+                              height: 4,
+                            ),
+                            Text('Jovi Daniel',style: themeData.textTheme.bodyLarge,),
+                            SizedBox(height: 6,),
+                            Text('UX Designer',style: themeData.textTheme.bodyLarge!.apply(color: themeData.colorScheme.primary),),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                Text('About me'),
-                Text('Madison Blackstone is a director of user experience design, with experience managing global teams.'),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(32, 0, 32, 4),
+                  child: Text('About me',style: themeData.textTheme.headlineSmall,),
+                ),
+                Padding(
+                  padding: EdgeInsets.fromLTRB(32, 4, 32, 32),
+                  child: Text('Madison Blackstone is a director of user experience design, with experience managing global teams.',
+                  style: themeData.textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w200),
+                  ),
+                ),
 
 
               ],
