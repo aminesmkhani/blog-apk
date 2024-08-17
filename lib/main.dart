@@ -1,4 +1,5 @@
 import 'package:blogclub/gen/fonts.gen.dart';
+import 'package:blogclub/home.dart';
 import 'package:blogclub/profile.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-         textButtonTheme: TextButtonThemeData(
+        textButtonTheme: TextButtonThemeData(
             style: ButtonStyle(
                 textStyle: WidgetStateProperty.all(const TextStyle(
           fontSize: 14,
@@ -32,20 +33,18 @@ class MyApp extends StatelessWidget {
           fontFamily: FontFamily.avenir,
         )))),
         appBarTheme: AppBarTheme(
-          backgroundColor: Colors.white,
-          foregroundColor: primaryTextColor,
-          titleSpacing: 32
-          ),
+            backgroundColor: Colors.white,
+            foregroundColor: primaryTextColor,
+            titleSpacing: 32),
         snackBarTheme: const SnackBarThemeData(
           backgroundColor: primaryColor,
-
-        ),  
+        ),
         colorScheme: ColorScheme.light(
-            primary: primaryColor,
-            onPrimary: Colors.white,
-            onSurface: primaryTextColor,
-            surface: Colors.white,
-            ),
+          primary: primaryColor,
+          onPrimary: Colors.white,
+          onSurface: primaryTextColor,
+          surface: Colors.white,
+        ),
         textTheme: TextTheme(
           titleMedium: TextStyle(
               fontFamily: FontFamily.avenir,
@@ -97,7 +96,19 @@ class MyApp extends StatelessWidget {
       //   const Positioned.fill(child: HomeScreen()),
       //   Positioned(bottom: 0, right: 0, left: 0, child: _BottomNavigation())
       // ]),
-      home: const ProfileScreen(),
+      home:  const MainScreen(),
+    );
+  }
+}
+
+class MainScreen extends StatelessWidget {
+  const MainScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: _BottomNavigation(),
+      body: const HomeScreen(),
     );
   }
 }
@@ -117,7 +128,7 @@ class _BottomNavigation extends StatelessWidget {
               height: 65,
               decoration: const BoxDecoration(color: Colors.white, boxShadow: [
                 BoxShadow(
-                  blurRadius: 20,
+                  blurRadius: 0,
                   color: Color(0xff9b8487),
                 ),
               ]),
