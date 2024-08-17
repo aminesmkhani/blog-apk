@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:blogclub/gen/assets.gen.dart';
 import 'package:blogclub/gen/fonts.gen.dart';
 import 'package:flutter/material.dart';
@@ -108,7 +106,6 @@ class _AuthScreenState extends State<AuthScreen> {
 
 class _Login extends StatelessWidget {
   const _Login({
-    super.key,
     required this.themeData,
   });
 
@@ -200,7 +197,6 @@ class _Login extends StatelessWidget {
 
 class _SignUp extends StatelessWidget {
   const _SignUp({
-    super.key,
     required this.themeData,
   });
 

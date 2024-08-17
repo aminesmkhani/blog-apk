@@ -2,7 +2,7 @@ import 'package:blogclub/data.dart';
 import 'package:blogclub/gen/assets.gen.dart';
 import 'package:blogclub/home.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -14,25 +14,26 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: themeData.colorScheme.surface.withOpacity(0),
-        title: Text('Profile'),
+        title: const Text('Profile'),
         actions: [
           IconButton(
-            icon: Icon(Icons.more_horiz_rounded),
+            icon: const Icon(Icons.more_horiz_rounded),
             onPressed: () {},
           ),
-          SizedBox(
+          const SizedBox(
             width: 16,
           )
         ],
       ),
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
               children: [
                 Container(
-                  margin: EdgeInsets.fromLTRB(32, 0, 32, 64),
+                  margin: const EdgeInsets.fromLTRB(32, 0, 32, 64),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
                       color: themeData.colorScheme.surface,
@@ -53,22 +54,22 @@ class ProfileScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(12),
                                 child: Assets.img.stories.story8
                                     .image(width: 84, height: 84)),
-                            SizedBox(
+                            const SizedBox(
                               width: 16,
                             ),
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('@jovieden'),
-                                  SizedBox(
+                                  const Text('@jovieden'),
+                                  const SizedBox(
                                     height: 4,
                                   ),
                                   Text(
                                     'Jovi Daniel',
                                     style: themeData.textTheme.bodyLarge,
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 6,
                                   ),
                                   Text(
@@ -83,14 +84,14 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.fromLTRB(32, 0, 32, 4),
+                        padding: const EdgeInsets.fromLTRB(32, 0, 32, 4),
                         child: Text(
                           'About me',
                           style: themeData.textTheme.headlineSmall,
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.fromLTRB(32, 4, 32, 32),
+                        padding: const EdgeInsets.fromLTRB(32, 4, 32, 32),
                         child: Text(
                           'Madison Blackstone is a director of user experience design, with experience managing global teams.',
                           style: themeData.textTheme.bodyLarge!
@@ -134,7 +135,7 @@ class ProfileScreen extends StatelessWidget {
                           flex: 1,
                           child: Container(
                             decoration: BoxDecoration(
-                                color: Color(0xff2151CD),
+                                color: const Color(0xff2151CD),
                                 borderRadius: BorderRadius.circular(12)),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
@@ -207,7 +208,7 @@ class ProfileScreen extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                   color: themeData.colorScheme.surface,
-                  borderRadius: BorderRadius.only(
+                  borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(32),
                       topRight: Radius.circular(32))),
               child: Column(

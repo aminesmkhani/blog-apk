@@ -1,8 +1,5 @@
-import 'package:blogclub/article.dart';
 import 'package:blogclub/gen/fonts.gen.dart';
-import 'package:blogclub/home.dart';
 import 'package:blogclub/profile.dart';
-import 'package:blogclub/splash.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/services.dart';
 
