@@ -113,36 +113,39 @@ const int homeIndex = 0;
 const int articleIndex = 1;
 const int searchIndex = 2;
 const int menuIndex = 3;
+const double bottomNavigationHeight = 65;
 
 class _MainScreenState extends State<MainScreen> {
   int selectedScreenIndex = homeIndex;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: Stack(
         children: [
-          IndexedStack(
-            index: selectedScreenIndex,
-            children: [
-              HomeScreen(),
-              ArticleScreen(),
-              SearchScreen(),
-              ProfileScreen()
-            ],
+          Positioned.fill(
+            bottom: bottomNavigationHeight,
+            child: IndexedStack(
+              index: selectedScreenIndex,
+              children: [
+                HomeScreen(),
+                ArticleScreen(),
+                SearchScreen(),
+                ProfileScreen()
+              ],
+            ),
           ),
           Positioned(
             bottom: 0,
             right: 0,
             left: 0,
             child: _BottomNavigation(
-                    selectedIndex: selectedScreenIndex,
-                    onTap: (int index) {
-            setState(() {
-              selectedScreenIndex = index;
-            });
-                    },
-                  ),
+              selectedIndex: selectedScreenIndex,
+              onTap: (int index) {
+                setState(() {
+                  selectedScreenIndex = index;
+                });
+              },
+            ),
           ),
         ],
       ),
@@ -166,7 +169,8 @@ class _BottomNavigation extends StatelessWidget {
   final Function(int index) onTap;
   final int selectedIndex;
 
-  const _BottomNavigation({super.key, required this.onTap, required this.selectedIndex});
+  const _BottomNavigation(
+      {super.key, required this.onTap, required this.selectedIndex});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -194,7 +198,7 @@ class _BottomNavigation extends StatelessWidget {
                       onTap: () {
                         onTap(homeIndex);
                       },
-                      isActive: selectedIndex==homeIndex,
+                      isActive: selectedIndex == homeIndex,
                       title: 'Home'),
                   BottomNavigationItem(
                       iconFileName: 'Articles.png',
@@ -202,7 +206,7 @@ class _BottomNavigation extends StatelessWidget {
                       onTap: () {
                         onTap(articleIndex);
                       },
-                      isActive: selectedIndex==articleIndex,
+                      isActive: selectedIndex == articleIndex,
                       title: 'Article'),
                   SizedBox(
                     width: 8,
@@ -213,7 +217,7 @@ class _BottomNavigation extends StatelessWidget {
                       onTap: () {
                         onTap(searchIndex);
                       },
-                      isActive: selectedIndex==searchIndex,
+                      isActive: selectedIndex == searchIndex,
                       title: 'Search'),
                   BottomNavigationItem(
                       iconFileName: 'Menu.png',
@@ -221,7 +225,7 @@ class _BottomNavigation extends StatelessWidget {
                       onTap: () {
                         onTap(menuIndex);
                       },
-                      isActive: selectedIndex==menuIndex,
+                      isActive: selectedIndex == menuIndex,
                       title: 'Menu'),
                 ],
               ),
@@ -233,7 +237,7 @@ class _BottomNavigation extends StatelessWidget {
               height: 85,
               alignment: Alignment.topCenter,
               child: Container(
-                height: 65,
+                height: bottomNavigationHeight,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(32.5),
                     color: const Color(0xff376AED),
@@ -270,15 +274,18 @@ class BottomNavigationItem extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset('assets/img/icons/$iconFileName',color: isActive?themeData.colorScheme.primary:themeData.textTheme.bodySmall!.color,),
+          Image.asset(
+            'assets/img/icons/$iconFileName',width: 34,height: 34,
+            color: isActive
+                ? themeData.colorScheme.primary
+                : themeData.textTheme.bodySmall!.color,
+          ),
           const SizedBox(
             height: 4,
           ),
           Text(
             title,
-            
-            style:
-             themeData.textTheme.bodySmall!.apply(
+            style: themeData.textTheme.bodySmall!.apply(
                 color: isActive
                     ? themeData.colorScheme.primary
                     : themeData.textTheme.bodySmall?.color),
