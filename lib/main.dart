@@ -120,6 +120,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: _BottomNavigation(
+        selectedIndex: selectedScreenIndex,
         onTap: (int index) {
           setState(() {
             selectedScreenIndex = index;
@@ -153,8 +154,9 @@ class SearchScreen extends StatelessWidget {
 
 class _BottomNavigation extends StatelessWidget {
   final Function(int index) onTap;
+  final int selectedIndex;
 
-  const _BottomNavigation({super.key, required this.onTap});
+  const _BottomNavigation({super.key, required this.onTap, required this.selectedIndex});
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -182,6 +184,7 @@ class _BottomNavigation extends StatelessWidget {
                       onTap: () {
                         onTap(homeIndex);
                       },
+                      isActive: selectedIndex==homeIndex,
                       title: 'Home'),
                   BottomNavigationItem(
                       iconFileName: 'Articles.png',
@@ -189,6 +192,7 @@ class _BottomNavigation extends StatelessWidget {
                       onTap: () {
                         onTap(articleIndex);
                       },
+                      isActive: selectedIndex==articleIndex,
                       title: 'Article'),
                   SizedBox(
                     width: 8,
@@ -199,6 +203,7 @@ class _BottomNavigation extends StatelessWidget {
                       onTap: () {
                         onTap(searchIndex);
                       },
+                      isActive: selectedIndex==searchIndex,
                       title: 'Search'),
                   BottomNavigationItem(
                       iconFileName: 'Menu.png',
@@ -206,6 +211,7 @@ class _BottomNavigation extends StatelessWidget {
                       onTap: () {
                         onTap(menuIndex);
                       },
+                      isActive: selectedIndex==menuIndex,
                       title: 'Menu'),
                 ],
               ),
@@ -237,27 +243,35 @@ class BottomNavigationItem extends StatelessWidget {
   final String activeIconFileName;
   final String title;
   final Function() onTap;
+  final bool isActive;
 
   const BottomNavigationItem(
       {super.key,
       required this.iconFileName,
       required this.activeIconFileName,
       required this.title,
-      required this.onTap});
+      required this.onTap,
+      required this.isActive});
   @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = Theme.of(context);
     return InkWell(
       onTap: onTap,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset('assets/img/icons/$iconFileName'),
+          Image.asset('assets/img/icons/$iconFileName',color: isActive?themeData.colorScheme.primary:themeData.textTheme.bodySmall!.color,),
           const SizedBox(
             height: 4,
           ),
           Text(
             title,
-            style: Theme.of(context).textTheme.bodySmall,
+            
+            style:
+             themeData.textTheme.bodySmall!.apply(
+                color: isActive
+                    ? themeData.colorScheme.primary
+                    : themeData.textTheme.bodySmall?.color),
           )
         ],
       ),
