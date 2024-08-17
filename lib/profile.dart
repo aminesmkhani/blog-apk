@@ -51,6 +51,10 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+                Text('About me'),
+                Text('Madison Blackstone is a director of user experience design, with experience managing global teams.'),
+                
+
               ],
             ),
           ),
