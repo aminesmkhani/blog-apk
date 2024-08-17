@@ -208,18 +208,27 @@ class ProfileScreen extends StatelessWidget {
                     topRight: Radius.circular(32))),
             child: Column(
               children: [
-                Row(
-                  children: [
-                    Text('My Posts'),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Assets.img.icons.grid.svg(),
-                    ),
-                     IconButton(
-                      onPressed: () {},
-                      icon: Assets.img.icons.table.svg(),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(32, 16, 32, 16),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'My Posts',
+                          style: themeData.textTheme.headlineSmall,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Assets.img.icons.grid.svg(),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Assets.img.icons.table.svg(),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
