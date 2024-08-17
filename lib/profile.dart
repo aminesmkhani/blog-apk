@@ -10,7 +10,7 @@ class ProfileScreen extends StatelessWidget {
     final themeData = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        
+        backgroundColor: themeData.colorScheme.surface.withOpacity(0),
         title: Text('Profile'),
         actions: [
           IconButton(icon: Icon(Icons.more_horiz_rounded), onPressed: () { 
@@ -32,7 +32,7 @@ class ProfileScreen extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   blurRadius: 20,
-                  color: themeData.colorScheme.onSurface.withOpacity(0.2),
+                  color: themeData.colorScheme.onSurface.withOpacity(0.1),
                   ),
               ]
             ),
