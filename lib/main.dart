@@ -1,3 +1,4 @@
+import 'package:blogclub/article.dart';
 import 'package:blogclub/gen/fonts.gen.dart';
 import 'package:blogclub/home.dart';
 import 'package:blogclub/profile.dart';
@@ -96,7 +97,7 @@ class MyApp extends StatelessWidget {
       //   const Positioned.fill(child: HomeScreen()),
       //   Positioned(bottom: 0, right: 0, left: 0, child: _BottomNavigation())
       // ]),
-      home:  const MainScreen(),
+      home: const MainScreen(),
     );
   }
 }
@@ -108,7 +109,25 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: _BottomNavigation(),
-      body: const HomeScreen(),
+      body: IndexedStack(
+        index: 0,
+        children: [
+          HomeScreen(),
+          ArticleScreen(),
+        ],
+      ),
+    );
+  }
+}
+
+class SearchScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text(
+        'Search Screen',
+        style: Theme.of(context).textTheme.headlineMedium,
+      ),
     );
   }
 }
