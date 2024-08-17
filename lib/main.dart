@@ -102,18 +102,31 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+const int homeIndex = 0;
+const int articleIndex = 1;
+const int searchIndex = 2;
+const int menuIndex = 3;
+
+class _MainScreenState extends State<MainScreen> {
+  int selectedScreenIndex = homeIndex;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: _BottomNavigation(),
       body: IndexedStack(
-        index: 0,
+        index: 2,
         children: [
           HomeScreen(),
           ArticleScreen(),
+          SearchScreen(),
+          ProfileScreen()
         ],
       ),
     );
